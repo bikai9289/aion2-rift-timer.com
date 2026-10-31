@@ -1,11 +1,13 @@
+image: node:22
+
 pages:
   stage: deploy
   script:
-  - mkdir .public
-  - cp -r * .public
-  - mv .public public
+    - npm run check
+  pages:
+    publish: dist
   artifacts:
     paths:
-    - public
-  only:
-  - main
+      - dist
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'

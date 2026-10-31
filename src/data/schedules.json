@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-31T00:00:00Z",
+  "publication": { "enabled": false, "artworkCleared": false },
+  "sources": [
+    { "id": "atlas", "title": "Atlas community timer", "url": "https://aion2atlas.app/rift-timer/", "type": "community" },
+    { "id": "comparison", "title": "Community source comparison", "url": "https://aion2-rifttimer.com/sources/", "type": "community" }
+  ],
+  "regions": {
+    "global": { "name": "Global", "zone": "UTC", "status": "provisional", "reviewedAt": null, "sourceIds": ["atlas", "comparison"], "validUntil": null, "rift": { "intervalMinutes": 180, "anchorUtc": "1970-01-01T00:00:00Z" }, "reset": { "dailyHourUTC": 7, "weeklyDayUTC": 3 } },
+    "europe": { "name": "Europe / EU", "zone": "Europe/Berlin", "status": "provisional", "reviewedAt": null, "sourceIds": ["atlas", "comparison"], "validUntil": null, "rift": { "intervalMinutes": 180, "anchorUtc": "1970-01-01T00:00:00Z" }, "reset": { "dailyHourUTC": 7, "weeklyDayUTC": 3 } },
+    "na-east": { "name": "NA East", "zone": "America/New_York", "status": "provisional", "reviewedAt": null, "sourceIds": ["atlas", "comparison"], "validUntil": null, "rift": { "intervalMinutes": 180, "anchorUtc": "1970-01-01T00:00:00Z" }, "reset": { "dailyHourUTC": 7, "weeklyDayUTC": 3 } },
+    "na-west": { "name": "NA West", "zone": "America/Los_Angeles", "status": "provisional", "reviewedAt": null, "sourceIds": ["atlas", "comparison"], "validUntil": null, "rift": { "intervalMinutes": 180, "anchorUtc": "1970-01-01T00:00:00Z" }, "reset": { "dailyHourUTC": 7, "weeklyDayUTC": 3 } },
+    "asia": { "name": "Asia · pending", "zone": "UTC", "status": "pending", "reviewedAt": null, "sourceIds": ["comparison"], "validUntil": null, "rift": null, "reset": null },
+    "korea": { "name": "Korea", "zone": "Asia/Seoul", "status": "provisional", "reviewedAt": null, "sourceIds": ["comparison"], "validUntil": null, "rift": { "intervalMinutes": 180, "anchorUtc": "1970-01-01T02:00:00Z" }, "reset": { "dailyHourUTC": 20, "weeklyDayUTC": 2 } },
+    "taiwan": { "name": "Taiwan", "zone": "Asia/Taipei", "status": "provisional", "reviewedAt": null, "sourceIds": ["comparison"], "validUntil": null, "rift": { "intervalMinutes": 180, "anchorUtc": "1970-01-01T00:00:00Z" }, "reset": { "dailyHourUTC": 21, "weeklyDayUTC": 2 } }
+  }
+}

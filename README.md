@@ -1,88 +1,92 @@
-# TimeLord - A simple mobile game event countdown timer
+# Aion 2 Rift Timer
 
-[![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+基于已确认的 **V3 电影感界面**开发的静态网站。无需数据库、账号或第三方构建依赖，Node.js 20+ 即可运行。
 
-This work is licensed under a
-[Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
+## 本地启动
 
-[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+```sh
+npm run dev
+```
 
-[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
-[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
-[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
+打开 http://127.0.0.1:4320/ 。修改 `src/` 后重新构建。原 `python server.py` 也可启动同一套 Node 构建与服务。
 
-TimeLord is a simple web-based mobile game event countdown timer. (Emphasis on the word "simple" -- I
-literally knocked this out in like 2 hours.)
+```sh
+npm test         # 时间边界、DST、配置与未确认/过期状态
+npm run build    # 生成 dist/
+npm start        # 预览已生成的 dist/
+```
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/S6S55A4V)
-If you find this app useful, please consider [buying me a Ko-fi](https://ko-fi.com/S6S55A4V).
+可选浏览器验收：安装 Playwright（或用 `PLAYWRIGHT_MODULE` 指向已有运行时），启动网站后运行 `npm run test:browser`。`PLAYWRIGHT_EXECUTABLE` 可指定浏览器路径，`TEST_URL` 可指定测试地址。截图与结果写入不入 Git 的 `test-results/`。
 
-## But why?
+## 功能
 
-So, yeah, I love mobile games. And I am insane enough to be playing several of them. And there's always a ton of
-events whose dates I want to keep track of -- in-game events, gacha banners, anniversaries, long-ass maintenances,
-that sort of thing. And, as if that weren't hard enough, they tend to use different timezones -- some use UTC, some use Japan
-Standard Time, some use UTC+8 (those are the Chinese ones), etc. And my puny brain can't keep track of all of this
-and do all the timezone conversions. Surely there must be a better way? (and don't call me Shirley...)
+- V3 长首页：三场景切换、大号倒计时、浮动计时器、活动画廊与地区时钟。
+- Europe、Asia、每日/每周 Reset 三个独立页面。
+- 区服、本地时间/区域时钟/UTC、未来 4/8 场、浏览器标题倒计时。
+- 提前 5/10/15 分钟提醒、音效测试、通知拒绝时的页内提醒；刷新后不会擅自重新开启通知。
+- ICS 导出：Rift 最多 56 场；Reset 最多 7 个日重置和下次周重置，含提醒。单次导入，不是自动订阅。
+- 个人清单按参考日/周边界清空；偏好仅存本机。
+- 配置校验、过期处理、待核实状态、加载失败与重试。
+- 来源、版权署名、隐私、404；canonical、robots、sitemap、托管响应头和 CI。
+- 无第三方运行时 CDN、分析脚本、登录或支付。
 
-Well yeah there is. We're living in THE FUTURE (zura) after all. There are many great countdown apps for mobile
-devices. But there are several problems with these. First, many of them don't support different timezones. And,
-even worse, they don't sync data across multiple devices. (At least none that I could find did.) And I typically
-play on one of several different devices -- phone, tablet and/or computer -- depending on the situation. Having to
-maintain the same list of event timers on each different device was getting to be a royal pain.
+## 改时间只改一个文件
 
-So I was bored one night and though to myself "shouldn't there be a web app for this?" Well surprisingly there
-wasn't. (At least none that I could find.) And so I decided, right on the spot, to make one. (Yeah, I'm kinda
-impulsive like that...)
+编辑 [`src/data/schedules.json`](src/data/schedules.json)，然后重新构建。
 
-**THIS CODE IS UGLY. YES, I WILL ADMIT IT.** Being a one-off personal project, this doesn't measure up to my
-paying-job-level quality control standards, and is coded in very much a "run and gun, shoot from the hip" ethos.
-You have been warned.
+| 配置 | 含义 |
+| --- | --- |
+| `zone` | 区域显示时区（IANA）；不代表已确认的服务器时钟 |
+| `rift.anchorUtc` | 某次开放的绝对 UTC 时间 |
+| `rift.intervalMinutes` | 重复周期（分钟） |
+| `reset.dailyHourUTC` | 每日重置的 UTC 小时 |
+| `reset.weeklyDayUTC` | 周重置的 UTC 星期，0=周日 |
+| `status` | `provisional` 演示、`pending` 无数据、`verified` 已核实 |
+| `reviewedAt` | 真实核对日期（UTC）；未核实为 null |
+| `validUntil` | 数据有效期；不会生成超出有效期的场次 |
+| `sourceIds` | 对应文件上方的来源 ID |
 
-## How do I use this?
+Asia 当前为 pending：计时显示 `--`，禁用提醒和日历，不套用其他服务。KR/TW 仍是演示配置，不得把社区资料审阅冒充游戏内实测。
 
-You'll need to add information on the games you play, and the events you want to track, into the `events.json`
-file. This file is in [JSON format](https://en.wikipedia.org/wiki/JSON) and should be fairly self-explanatory.
-Just copypasta the example info I have in there and change it to your liking.
+## 当前发布状态
 
-Note that when specifying timezones, you will need to specify by their [TZ identifier](https://www.ibm.com/docs/en/cloudpakw3700/2.3.0.0?topic=SS6PD2_2.3.0/doc/psapsys_restapi/time_zone_list.htm). You can usually find out a game's
-timezone by browsing through their in-game news/announcements, or ask around in the game's subreddit (or if all
-else fails, good old [/r/gachagaming](https://www.reddit.com/r/gachagaming/).)
+开发版已可构建和部署，**尚未公开发布**。
 
-**IMPORTANT NOTE:** If you are trying to specify a timezone as a GMT offset (e.g. `GMT+9`),
-**you must flip the sign**. (so, for example, a GMT offset of +9 would be specified as `Etc/GMT-9`.)
-Seems ass-backward, but apparently [it's a weird timezone database thing](https://stackoverflow.com/a/39781455).
-What can you do? `¯\_(ツ)_/¯` (Yeah, this one totally didn't have me banging my head against a brick wall for hours
-on end.)
+1. 时刻表含 provisional 数据，尤其 Global / DST 存在分歧，需要真实核实。
+2. 官方宣传图用于设计预览，公开发布权限尚未确认；可替换为你有权使用的图片。
+3. `publication.enabled=false` 时生成 noindex，sitemap 不提交演示页面。
+4. 核对时刻、补 `reviewedAt` 与来源、处理图片权限后，再启用 `publication.artworkCleared` 和 `publication.enabled`。构建会拒绝仍有 provisional 数据的公开发布配置。
 
-**ANOTHER IMPORTANT NOTE:** Beware! Some games can be confusing and inconsistent as to what timezone they use when displaying times in various parts of the game. For example, Epic Seven shows times in the server's time zone (UTC) in the news & announcement screen; however **the date and time shown on the actual gacha screen is in your local time zone**. The late lamented SIF All Stars did one better; their app automagically translated all times to your local timezone, anywhere and everywhere in the app. (yes, Klab actually did something right for once. Shocking, I know.)
+## Cloudflare Pages 部署
 
-Once you've added/updated the event info you want to track, you'll need to get this code up onto the Web somehow.
-If you have a web server, just stick the files in a directory and Bob's your uncle. If you don't have a Web server,
-then you can "cheat" using GitHub Pages -- they will host it for free, with
-[some restrictions](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#limits-on-use-of-github-pages) that shouldn't affect you.
-Just clone this repository on Github (set up a free Github account if you don't already have one) and enable
-Github Pages ([instructions can be found here](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages)).
-Your event counter should now be accessible at `https://yourusername.github.io/TimeLord/`.
+连接仓库，设置：
 
-## Troubleshooting
+- Framework preset：None
+- Build command：`npm run build`
+- Build output directory：`dist`
+- Node version：20 或以上
 
-The most common cause of problems is a badly formatted JSON file. You can paste your JSON file into this [online JSON validator](https://jsonlint.com/) and it should tell you where and how you need to fix it.
+输出含 `_headers` 和 `/rift-timer/eu` → `/rift-timer/europe/` 的 301 配置。添加自定义域名 `aion2-rift-timer.com` 后，按 Cloudflare 返回的要求配置 DNS。本次开发不自动修改域名或发布线上站点。
 
-Also, be sure all dates/times are formatted as `YYYY-MM-DD HH:MM` -- four digit year, and two digits each
-for month, day, hour and minute, with a leading zero if a number is less than 10, and time is in 24 hour
-format.
+## 目录
 
-## TODO's
+```text
+src/pages/              页面源文件
+src/styles/             V3 样式
+src/scripts/            共享时间计算和交互
+src/data/schedules.json 唯一时刻表数据源
+public/                 图片、应用清单、图片出处
+scripts/                构建和本地服务
+tests/                  Node 内置测试
+dist/                   可部署输出（自动生成，不入 Git）
+designs/                保留的设计版本
+docs/legacy/            原版 TimeLord 文件
+```
 
-- Needs to look nicer in general (but not TOO fancy)
-  - ~~Group games under their own header (with one of those disclosure triangles that let you show/hide an entire section)~~  Done. Except for the disclosure triangle bit. Real dumb idea.
-  - ~~the columns are not lining up, and I have no idea why~~ fixed it, apparently I don't know how to bootstrap.js :P
-  - use alternate highlighting for each game row to make it easier to tell them apart
-  - ~~responsivity (is that a word?) is still kinda meh, the app looks like ass on my iPhone~~ this looks a bit better now too
-- Handle data refreshing better (automatically check for updates periodically, don't make the user reload the browser)
-- Ability to create and edit events within the web app
-  - this is probably a distant goal, as it would probably require some sort of server back-end
-  - when/if this gets worked on, will probably end up turning this thing into a NodeJS app
-- ~~Add info on when day reset is for each game, in your local timezone (countdown timer would be neat too)~~  ~~Done. Sorta. It's still a hot mess, and is definitely a work in progress, plus has some bugs, but it kinda works now.~~  OK, got it working now. The "still a hot mess" part still applies though. :-P
-- make the code less hacky in general
+`scripts/prepare-source.py` 为一次性迁移工具，正常开发不运行（会覆盖源文件）。
+
+## 署名和许可证
+
+原作：[TimeLord by dburr](https://github.com/dburr/TimeLord)，声明 CC BY-SA 4.0；原说明在 `docs/UPSTREAM-README.md`。本项目保留署名与许可证通知，详见 [LICENSE.md](LICENSE.md)。第三方游戏图像不在该许可证授权范围内。
+
+Aion 2 artwork © NC Corporation / NCSOFT，出处见 `public/art-sources.json`。本工具独立于 NCSOFT，无官方背书。

@@ -1,0 +1,11 @@
+{
+  "id": "/",
+  "name": "Aion 2 Rift Timer",
+  "short_name": "Rift Timer",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#101113",
+  "theme_color": "#101113",
+  "description": "Aion 2 schedules, reminders and local-time conversion."
+}

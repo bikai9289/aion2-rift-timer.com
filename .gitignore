@@ -1,0 +1,9 @@
+dist/
+node_modules/
+test-results/
+.env
+.env.*
+!.env.example
+__pycache__/
+designs/
+design-preview.html
