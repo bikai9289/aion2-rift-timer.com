@@ -1,6 +1,6 @@
 'use strict';
 const el=id=>document.getElementById(id), mode=document.body.dataset.mode, locale=document.documentElement.lang||'en';
-const translations=(window.RiftLocales||{})[locale]||{}, t=key=>translations[key]||key;
+const t=key=>key;
 const HOUR=3600000, deviceZone=Intl.DateTimeFormat().resolvedOptions().timeZone||'UTC', regions=scheduleData.regions;
 const bossQuery=new URL(location.href).searchParams.get('event');
 const pageEvent=document.body.dataset.eventGroup==='boss'&&['kaira','nahma','siege-bosses'].includes(bossQuery)?bossQuery:(document.body.dataset.event||(mode==='reset'?'daily-reset':'rift'));
@@ -27,13 +27,9 @@ function datesAfter(now=Date.now(),count=8){return RiftSchedule.openings(selecte
 function resetAfter(now,weekly=false){return RiftSchedule.openings(selectedRule(weekly?'weekly-reset':'daily-reset'),now,1)[0]||null;}
 function toast(message){clearTimeout(toastTimer);el('toast').textContent=message;el('toast').hidden=false;toastTimer=setTimeout(()=>el('toast').hidden=true,6500);}
 function remaining(date,now){const mins=Math.max(0,Math.ceil((+date-now)/60000)),hours=Math.floor(mins/60);return hours?hours+'h '+mins%60+'m':mins+'m';}
-const confidenceName=confidence=>t({'official':'Official','community-agreed':'Community-agreed','community-reported':'Community-reported','disputed':'Disputed','pending':'Pending'}[confidence]||'Pending');
+const confidenceName=confidence=>t({'official':'Official','community-agreed':'Community-agreed','community-reported':'Community-reported','disputed':'Source disagreement','pending':'Pending'}[confidence]||'Pending');
 const phaseName=phase=>t({entry:'Entry closes in',active:'Activity ends in',upcoming:'Next opening in',unavailable:'No published schedule for this service',expired:'Schedule expired'}[phase]||'Next opening in');
-function interpretationName(rule){
- if(!rule)return confidenceName('pending');
- if(rule.confidence!=='disputed')return confidenceName(rule.confidence);
- return t({'regional':'Regional-clock interpretation','unified':'Unified UTC+9 interpretation','utc':'Fixed-UTC interpretation'}[rule.profile]||'Regional-clock interpretation');
-}
+function interpretationName(rule){return confidenceName(rule?.confidence);}
 function renderOpenings(dates,now,rule){
  if(!el('openings'))return;
  const key=(dates[0]?.getTime()||'none')+region+zoneMode+profile+group+expanded;

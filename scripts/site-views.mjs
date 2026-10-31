@@ -7,7 +7,7 @@ export const eventDestinations=[
 ];
 export const regionDestinations=[['rift-timer/europe/','Europe / EU'],['rift-timer/asia/','Global Asia'],['rift-timer/korea/','Korea / KR'],['rift-timer/taiwan/','Taiwan / TW']];
 export const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export const evidenceName=value=>({'official':'Official','community-agreed':'Community-agreed','community-reported':'Community-reported','disputed':'Disputed','pending':'Pending'}[value]||'Pending');
+export const evidenceName=value=>({'official':'Official','community-agreed':'Community-agreed','community-reported':'Community-reported','disputed':'Source disagreement','pending':'Pending'}[value]||'Pending');
 export function toolDirectory(route){
  const links=items=>items.map(([target,title])=>`<a href="/${target}"${target===route?' aria-current="page"':''}>${escapeHTML(title)} <span aria-hidden="true">↗</span></a>`).join('');
  return `<nav class="tool-directory" aria-label="Event and region timers"><div><h2>Event timers</h2><div class="tool-link-grid">${links(eventDestinations)}</div></div><div><h2>Region timers</h2><div class="tool-link-grid">${links(regionDestinations)}</div></div></nav>`;

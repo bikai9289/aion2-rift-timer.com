@@ -24,3 +24,10 @@ test('retired language routes have no links, alternates or offline precache; Kor
  assert.match(html('abyss-outland/'),/≈ 150 min window · ≈ 30 min per match/);
  assert.match(html('credits/'),/Publication permission has not been established/);
 });
+test('public release has no robots meta on all nineteen pages and no obsolete i18n dependency',()=>{
+ const all=[...routes,'rift-timer/location/','rift-timer/quests/','sources/','credits/','privacy/'];assert.equal(all.length,19);
+ for(const route of all){const text=html(route);assert.doesNotMatch(text,/<meta\b[^>]*name=["']robots["']/i,route);assert.doesNotMatch(text,/i18n\.js|>Disputed</,route);}
+ assert.equal(fs.existsSync('dist/i18n.js'),false);assert.doesNotMatch(fs.readFileSync('dist/sw.js','utf8'),/i18n\.js/);assert.doesNotMatch(fs.readFileSync('dist/_headers','utf8'),/X-Robots-Tag/);
+ const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');assert.equal((sitemap.match(/<lastmod>2026-10-31<\/lastmod>/g)||[]).length,17);
+ assert.match(html(''),/<noscript>[\s\S]*?timetable above remains readable without it/);
+});

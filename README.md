@@ -65,7 +65,7 @@ npm start        # 预览已生成的 dist/
 
 在 `src/data/site.json` 配置，或在托管平台设置 `SITE_URL` 覆盖它。所有 canonical / sitemap / 分享 URL 使用同一 origin。不要把尚未绑定的域名提前写成正式站址。
 
-当前 sitemap 聚焦 17 个英文内容页，不列繁中/韩文及 credits/privacy；非英文路由暂不生成，语言入口、hreflang 和非英文预缓存均停用；翻译源文件保留。`indexing=false` 和 `publication.enabled=false` 保留预发布 noindex（follow），不是空白 sitemap。
+当前 sitemap 聚焦 17 个英文内容页，不列繁中/韩文及 credits/privacy；非英文路由暂不生成，语言入口、hreflang 和非英文预缓存均停用；翻译源文件保留。按站主 2026-10-31 的发布指令，`site.indexing=true`；19 页不输出 robots meta，也无 noindex 响应头。图片授权状态独立保留，不冒充已获授权。sitemap lastmod 使用 `site.lastModified`，当前为 2026-10-31。
 
 所有工具页在 HTML 中直接输出对应服务的已公佈时刻表，关闭 JavaScript 仍能读到数字和活动入口。脚本成功启动后再接管未来场次及实时倒计时。共享工具目录使用原生链接，不依赖按钮事件。
 
@@ -73,7 +73,7 @@ npm start        # 预览已生成的 dist/
 
 1. 将 `SITE_URL` 改为 `https://aion2-rift-timer.com`。
 2. 确认图片公开使用权或换成有权使用的图片，设置 `publication.artworkCleared=true`。
-3. 设置 `publication.enabled=true`、`site.indexing=true`，重新构建。
+3. 索引开关使用 `site.indexing`，重新构建。`artworkCleared` 仅能据真实授权情况修改，不与索引开关混用。
 4. 提交新域名的 sitemap，并将临时 origin 重定向到正式域名。
 
 本次代码不自动登录 Cloudflare、绑定 DNS 或改动域名。
@@ -104,3 +104,5 @@ npm run test:browser
 原作：[TimeLord by dburr](https://github.com/dburr/TimeLord)，CC BY-SA 4.0；保留原 README 于 `docs/UPSTREAM-README.md`，旧代码于 `docs/legacy/`。参见 [LICENSE.md](LICENSE.md)。
 
 第三方 Aion 2 宣传图 © NC Corporation / NCSOFT，不受代码许可证授权；来源在 `public/art-sources.json`。公开发布权限尚未确认，未据此自动放开收录。工具独立于 NCSOFT。
+
+当前英文构建不再输出或加载 i18n.js。主界面、来源表及日历中有分歧的等级统一显示 Source disagreement，内部 confidence=disputed 不变。noscript 明确说明静态时刻表无需 JS，实时倒数/换算/提醒需要 JS。

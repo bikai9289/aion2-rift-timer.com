@@ -1,7 +1,8 @@
 {
   "url": "https://aion2-rift-timer.com",
-  "indexing": false,
+  "indexing": true,
   "languages": [
     "en"
-  ]
+  ],
+  "lastModified": "2026-10-31"
 }
