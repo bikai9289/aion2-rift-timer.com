@@ -11,7 +11,7 @@ const base=process.env.TEST_URL||'http://127.0.0.1:4320/',config=require('../src
   if(await page.locator('#region').count())await page.locator('#confidence-badge').filter({hasText:/Official|interpretation|Community|Pending|官方|方案|社群|待|공식|커뮤니티|해석|대기/}).waitFor();
   for(const width of[320,390,768,1440]){await page.setViewportSize({width,height:950});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,route+' overflow '+width);}
   assert.equal(await page.locator('link[rel="alternate"][hreflang]').count(),4,route+' hreflang');
-  assert.ok((await page.locator('link[rel="canonical"]').getAttribute('href')).startsWith('https://aion2-rift-timer.bikai9289.workers.dev/'));
+  assert.ok((await page.locator('link[rel="canonical"]').getAttribute('href')).startsWith(require('../src/data/site.json').url+'/'));
   assert.equal(await page.locator('meta[property="og:image"]').count(),1);
   await page.locator('script[type="application/ld+json"]').evaluate(n=>JSON.parse(n.textContent));
  }
