@@ -4,5 +4,11 @@
   "languages": [
     "en"
   ],
-  "lastModified": "2026-10-31"
+  "lastModified": {
+    "default": "2026-10-31",
+    "pages": {
+      "world-boss-timer/": "2026-10-31",
+      "credits/": "2026-10-31"
+    }
+  }
 }

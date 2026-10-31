@@ -541,7 +541,8 @@
           "confidence": "disputed",
           "sourceIds": [
             "shugo",
-            "wikily"
+            "wikily",
+            "metabot"
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
           "validUntil": null,
@@ -554,7 +555,8 @@
                 "metabot"
               ]
             }
-          }
+          },
+          "note": "Global servers: every 3 hours from 01:00 server time (8 spawns a day); Shugo, Wikily and MetaBot agree on the cycle. Korea and Taiwan use a 4-hour cycle. Sources differ only on which clock anchors Global time."
         }
       }
     },
@@ -976,7 +978,8 @@
           "confidence": "disputed",
           "sourceIds": [
             "shugo",
-            "wikily"
+            "wikily",
+            "metabot"
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
           "validUntil": null,
@@ -989,7 +992,8 @@
                 "metabot"
               ]
             }
-          }
+          },
+          "note": "Global servers: every 3 hours from 01:00 server time (8 spawns a day); Shugo, Wikily and MetaBot agree on the cycle. Korea and Taiwan use a 4-hour cycle. Sources differ only on which clock anchors Global time."
         }
       }
     },
@@ -1411,7 +1415,8 @@
           "confidence": "disputed",
           "sourceIds": [
             "shugo",
-            "wikily"
+            "wikily",
+            "metabot"
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
           "validUntil": null,
@@ -1424,7 +1429,8 @@
                 "metabot"
               ]
             }
-          }
+          },
+          "note": "Global servers: every 3 hours from 01:00 server time (8 spawns a day); Shugo, Wikily and MetaBot agree on the cycle. Korea and Taiwan use a 4-hour cycle. Sources differ only on which clock anchors Global time."
         }
       }
     },
@@ -1846,7 +1852,8 @@
           "confidence": "disputed",
           "sourceIds": [
             "shugo",
-            "wikily"
+            "wikily",
+            "metabot"
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
           "validUntil": null,
@@ -1859,7 +1866,8 @@
                 "metabot"
               ]
             }
-          }
+          },
+          "note": "Global servers: every 3 hours from 01:00 server time (8 spawns a day); Shugo, Wikily and MetaBot agree on the cycle. Korea and Taiwan use a 4-hour cycle. Sources differ only on which clock anchors Global time."
         }
       }
     },
@@ -2281,7 +2289,8 @@
           "confidence": "disputed",
           "sourceIds": [
             "shugo",
-            "wikily"
+            "wikily",
+            "metabot"
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
           "validUntil": null,
@@ -2294,7 +2303,8 @@
                 "metabot"
               ]
             }
-          }
+          },
+          "note": "Global servers: every 3 hours from 01:00 server time (8 spawns a day); Shugo, Wikily and MetaBot agree on the cycle. Korea and Taiwan use a 4-hour cycle. Sources differ only on which clock anchors Global time."
         }
       }
     },
@@ -2607,7 +2617,8 @@
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
           "validUntil": null,
-          "fold": "first"
+          "fold": "first",
+          "note": "Korea and Taiwan: every 4 hours from 00:00 service time (6 spawns a day). Global servers use a different 3-hour cycle."
         },
         "outland": {
           "zone": "Asia/Seoul",
@@ -2939,7 +2950,8 @@
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
           "validUntil": null,
-          "fold": "first"
+          "fold": "first",
+          "note": "Korea and Taiwan: every 4 hours from 00:00 service time (6 spawns a day). Global servers use a different 3-hour cycle."
         },
         "domination": {
           "zone": "Asia/Taipei",
@@ -3383,7 +3395,8 @@
           "confidence": "disputed",
           "sourceIds": [
             "shugo",
-            "wikily"
+            "wikily",
+            "metabot"
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
           "validUntil": null,
@@ -3396,7 +3409,8 @@
                 "metabot"
               ]
             }
-          }
+          },
+          "note": "Global servers: every 3 hours from 01:00 server time (8 spawns a day); Shugo, Wikily and MetaBot agree on the cycle. Korea and Taiwan use a 4-hour cycle. Sources differ only on which clock anchors Global time."
         }
       },
       "aliasOf": "na-east"

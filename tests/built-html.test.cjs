@@ -22,7 +22,8 @@ test('retired language routes have no links, alternates or offline precache; Kor
  assert.match(html('rift-timer/taiwan/'),/Cycle · Official \/ Entry window · Official/);
  const boss=html('world-boss-timer/');for(const name of['Executor Tamasa','Executor Argo','Executor Kaira'])assert.match(boss,new RegExp('<td>'+name+'</td>'));
  assert.match(html('abyss-outland/'),/≈ 150 min window · ≈ 30 min per match/);
- assert.match(html('credits/'),/Publication permission has not been established/);
+ assert.match(html('credits/'),/have not received a license or permission from NCSOFT/);assert.doesNotMatch(html('credits/'),/before the publication gate is cleared/);
+ assert.match(boss,/AION 2 bosses aren’t one table/);assert.match(boss,/every 3 hours from 01:00/);assert.match(boss,/4-hour cycle/);
 });
 test('public release has no robots meta on all nineteen pages and no obsolete i18n dependency',()=>{
  const all=[...routes,'rift-timer/location/','rift-timer/quests/','sources/','credits/','privacy/'];assert.equal(all.length,19);
