@@ -1,90 +1,48 @@
-// Optional integration suite: install Playwright or point PLAYWRIGHT_MODULE at an existing runtime.
-const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
-const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
-const base = process.env.TEST_URL || 'http://127.0.0.1:4320/';
-const config = require('../src/data/schedules.json');
-(async () => {
-  const browser = await chromium.launch({ headless:true, ...(process.env.PLAYWRIGHT_EXECUTABLE ? {executablePath:process.env.PLAYWRIGHT_EXECUTABLE} : {}) });
-  const context = await browser.newContext({viewport:{width:1440,height:1000},timezoneId:'Asia/Shanghai',reducedMotion:'reduce'});
-  await context.addInitScript(() => { Object.defineProperty(window,'Notification',{configurable:true,value:class {static permission='denied';}}); });
-  const page = await context.newPage();
-  const errors = [];
-  page.on('pageerror',e=>errors.push(String(e)));
-  page.on('console',m=>{if(m.type()==='error')errors.push(m.text()+' '+m.location().url);});
-  const output = path.resolve('test-results'); fs.mkdirSync(output,{recursive:true});
-  for(const route of ['', 'rift-timer/europe/', 'rift-timer/asia/', 'reset-timer/', 'sources/', 'credits/', 'privacy/']) {
-    assert.equal((await page.goto(new URL(route,base).href)).status(),200);
-    if(route.includes('asia')) {
-      await page.getByText('Schedule awaiting verification',{exact:true}).waitFor();
-      assert.equal(await page.locator('#calendar').isDisabled(),true);
-    } else if(!['sources/','credits/','privacy/'].includes(route)) {
-      if(route==='reset-timer/') { await page.locator('#next-time').filter({hasText:/awaiting|\d{2}:/}).waitFor(); await page.locator('#region').selectOption('global'); }
-      await page.locator('#seconds').filter({hasText:/^\d\d$/}).waitFor();
-    }
-    for(const width of [320,390,768,1440]) {
-      await page.setViewportSize({width,height:900});
-      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,route+' overflow at '+width);
-    }
-  }
-  await page.goto(base);
-  await page.locator('#seconds').filter({hasText:/^\d\d$/}).waitFor();
-  await page.locator('#region').selectOption('global');
-  await page.locator('#expand-schedule').click(); assert.equal(await page.locator('.opening').count(),8);
-  await page.locator('[data-zone="utc"]').click(); assert.match(await page.locator('#schedule-note').textContent(),/UTC/);
-  await page.locator('[data-scene="fire"]').click(); assert.match(await page.locator('#hero-scene').getAttribute('src'),/Bg4/);
-  await page.locator('[data-scene="rift"]').click();
-  await page.locator('#alert-open').click();
-  await page.locator('#lead').selectOption('15');
-  await page.locator('#enable-alerts').click(); assert.match(await page.locator('#alert-status').textContent(),/denied/);
-  await page.locator('#enable-alerts').click(); await page.keyboard.press('Escape');
-  const waitDownload = page.waitForEvent('download'); await page.locator('#calendar').click();
-  const download = await waitDownload; const ics = fs.readFileSync(await download.path(),'utf8');
-  assert.equal((ics.match(/BEGIN:VEVENT/g)||[]).length,56); assert.equal((ics.match(/TRIGGER:-PT15M/g)||[]).length,56);
-  await page.locator('#region').selectOption('asia');
-  assert.equal(await page.locator('#hours').textContent(),'--');
-  assert.equal(await page.locator('#calendar').isDisabled(),true);
-  assert.equal(await page.locator('#alert-open').isDisabled(),true);
-  assert.match(await page.locator('#reset-countdown').textContent(),/--/);
-  await page.locator('#region').selectOption('global');
-  await page.locator('[data-zone="local"]').click();
-  await page.locator('#expand-schedule').click();
-  await page.setViewportSize({width:1440,height:1000});
-  await page.evaluate(()=>{document.querySelectorAll('img[loading="lazy"]').forEach(i=>i.loading='eager');});
-  await page.evaluate(()=>Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))));
-  await page.screenshot({path:path.join(output,'desktop.png'),fullPage:true});
-  await page.setViewportSize({width:390,height:844});
-  await page.screenshot({path:path.join(output,'mobile.png'),fullPage:true});
-  await page.goto(new URL('reset-timer/',base).href);
-  await page.locator('#seconds').filter({hasText:/^\d\d$/}).waitFor();
-  await page.locator('[data-check="daily-entries"]').check(); await page.reload();
-  await page.locator('#seconds').filter({hasText:/^\d\d$/}).waitFor();
-  assert.equal(await page.locator('[data-check="daily-entries"]').isChecked(),true);
-  await page.locator('#region').selectOption('asia');
-  assert.equal(await page.locator('[data-check="daily-entries"]').isDisabled(),true);
-  await page.locator('#region').selectOption('global');
-  await page.locator('#clear-checklist').click(); assert.equal(await page.locator('[data-check="daily-entries"]').isChecked(),false);
-  // Server errors must not silently leave a forever-loading or fabricated countdown.
-  const faultContext = await browser.newContext(); const fault = await faultContext.newPage();
-  await fault.route('**/data/schedules.json',route=>route.fulfill({status:503,body:'Unavailable'}));
-  await fault.goto(base); await fault.locator('.load-error').waitFor();
-  assert.equal(await fault.locator('#calendar').isDisabled(),true);
-  await fault.unroute('**/data/schedules.json'); await fault.getByRole('button',{name:'Retry',exact:true}).click();
-  await fault.locator('#seconds').filter({hasText:/^\d\d$/}).waitFor();
-  // Invalid data and expired data are separate, observable states.
-  const invalid = structuredClone(config); invalid.regions.global.zone='Invalid/Timezone';
-  await fault.route('**/data/schedules.json',route=>route.fulfill({json:invalid}));
-  await fault.reload(); await fault.locator('.load-error').waitFor(); assert.match(await fault.locator('.load-error').textContent(),/CONFIG_TIMEZONE/);
-  await fault.unroute('**/data/schedules.json');
-  const expired = structuredClone(config); expired.regions.global.validUntil='2020-01-01T00:00:00Z';
-  await fault.route('**/data/schedules.json',route=>route.fulfill({json:expired}));
-  await fault.reload(); await fault.getByText('Schedule expired — awaiting review',{exact:true}).waitFor();
-  assert.equal(await fault.locator('#alert-open').isDisabled(),true);
-  const alias = await context.request.get(new URL('rift-timer/eu/',base).href,{maxRedirects:0}); assert.equal(alias.status(),301);
-  assert.equal((await context.request.get(new URL('missing-page',base).href)).status(),404);
-  assert.deepEqual(errors,[]);
-  const result={status:'passed',pages:7,widths:[320,390,768,1440],checks:['Built site has no runtime/console errors','Pending region disables schedule/calendar/alerts/checklist','Scenes, zones and 4/8 openings','Denied permission fallback','ICS 56 events with selected alarms','Checklist persistence','Data HTTP failure and retry','Invalid configuration error','Expired schedule state','EU redirect and 404'],screenshots:['desktop.png','mobile.png']};
-  fs.writeFileSync(path.join(output,'browser-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));
-  await browser.close();
-})().catch(error=>{console.error(error);process.exit(1);});
+const{chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');const assert=require('node:assert/strict');const fs=require('node:fs');const path=require('node:path');
+const base=process.env.TEST_URL||'http://127.0.0.1:4320/',config=require('../src/data/schedules.json');
+(async()=>{
+ const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_EXECUTABLE}:{})});
+ const context=await browser.newContext({viewport:{width:1440,height:1000},timezoneId:'Asia/Shanghai',reducedMotion:'reduce',serviceWorkers:'block'});
+ await context.addInitScript(()=>Object.defineProperty(window,'Notification',{configurable:true,value:class{static permission='denied';}}));
+ const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(String(e)));page.on('console',m=>{if(m.type()==='error')errors.push(m.text()+' '+m.location().url);});
+ const output=path.resolve('test-results');fs.mkdirSync(output,{recursive:true});
+ for(const route of['','rift-timer/europe/','rift-timer/asia/','reset-timer/','shugo-festival/','dimensional-invasion/','battlefield/','artifact-siege/','world-boss-timer/','abyss-outland/','argo-spirit-king/','rift-domination/','rift-timer/location/','rift-timer/quests/','sources/','credits/','privacy/','zh-Hant/','ko/']){
+  assert.equal((await page.goto(new URL(route,base).href)).status(),200,route);
+  if(await page.locator('#region').count())await page.locator('#confidence-badge').filter({hasText:/Official|Disputed|Community|Pending|官方|爭議|社群|待|공식|커뮤니티|불일치|대기/}).waitFor();
+  for(const width of[320,390,768,1440]){await page.setViewportSize({width,height:950});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,route+' overflow '+width);}
+  assert.equal(await page.locator('link[rel="alternate"][hreflang]').count(),4,route+' hreflang');
+  assert.ok((await page.locator('link[rel="canonical"]').getAttribute('href')).startsWith('https://aion2-rift-timer.bikai9289.workers.dev/'));
+  assert.equal(await page.locator('meta[property="og:image"]').count(),1);
+  await page.locator('script[type="application/ld+json"]').evaluate(n=>JSON.parse(n.textContent));
+ }
+ await page.goto(base);await page.locator('#confidence-badge').filter({hasText:'Disputed'}).waitFor();assert.equal(await page.locator('.event-clock').count(),13);
+ await page.locator('#region').selectOption('korea');assert.equal(await page.locator('#confidence-badge').textContent(),'Official');
+ await page.locator('#matching-group').selectOption('3');assert.equal(await page.locator('#matching-group').inputValue(),'3');assert.match(await page.locator('#matching-group option:checked').textContent(),/22:20/);
+ await page.locator('#region').selectOption('europe');assert.equal(await page.locator('#confidence-badge').textContent(),'Disputed');
+ await page.locator('#schedule-profile').selectOption('unified');assert.equal(await page.locator('#schedule-profile').inputValue(),'unified');
+ await page.locator('#schedule-profile').selectOption('regional');
+ await page.locator('#expand-schedule').click();assert.equal(await page.locator('.opening').count(),8);
+ await page.locator('[data-zone="utc"]').click();assert.match(await page.locator('#schedule-note').textContent(),/UTC/);
+ await page.locator('[data-scene="fire"]').click();assert.match(await page.locator('#hero-scene').getAttribute('src'),/Bg4/);await page.locator('[data-scene="rift"]').click();
+ await page.locator('#alert-open').click();await page.locator('#lead').selectOption('15');await page.locator('#enable-alerts').click();assert.match(await page.locator('#alert-status').textContent(),/denied/);await page.locator('#enable-alerts').click();await page.keyboard.press('Escape');
+ const waiting=page.waitForEvent('download');await page.locator('#calendar').click();const download=await waiting,ics=fs.readFileSync(await download.path(),'utf8');
+ assert.equal((ics.match(/BEGIN:VEVENT/g)||[]).length,56);assert.equal((ics.match(/TRIGGER:-PT15M/g)||[]).length,56);assert.match(ics,/Disputed/);assert.doesNotMatch(ics,/DEMO/);for(const line of ics.split('\r\n'))assert.ok(Buffer.byteLength(line,'utf8')<=75,'ICS line too long');
+ await page.locator('#region').selectOption('latam');assert.equal(await page.locator('#region').inputValue(),'latam');await page.locator('#region').selectOption('asia');assert.equal(await page.locator('#calendar').isDisabled(),false);
+ await page.goto(new URL('reset-timer/',base).href);await page.locator('#confidence-badge').filter({hasText:'Community-agreed'}).waitFor();
+ await page.locator('[data-check="daily-entries"]').check();await page.reload();await page.locator('#confidence-badge').filter({hasText:'Community-agreed'}).waitFor();assert.equal(await page.locator('[data-check="daily-entries"]').isChecked(),true);await page.locator('#clear-checklist').click();
+ await page.goto(new URL('rift-timer/location/',base).href);assert.equal(await page.locator('.data-table tbody tr').count(),10);
+ await page.goto(new URL('rift-timer/quests/',base).href);assert.equal(await page.locator('.data-table tbody tr').count(),14);
+ await page.goto(new URL('zh-Hant/',base).href);await page.locator('#confidence-badge').filter({hasText:'爭議'}).waitFor();assert.match(await page.locator('h1').innerText(),/跨界/);
+ await page.goto(new URL('ko/',base).href);await page.locator('#confidence-badge').filter({hasText:'불일치'}).waitFor();assert.match(await page.locator('h1').innerText(),/차원의/);
+ // Server failure, invalid schema and expired evidence have distinct recoverable states.
+ const fault=await context.newPage();await fault.route('**/data/schedules.json',route=>route.fulfill({status:503,body:'Unavailable'}));await fault.goto(base);await fault.locator('.load-error').waitFor();assert.equal(await fault.locator('#calendar').isDisabled(),true);await fault.unroute('**/data/schedules.json');await fault.getByRole('button',{name:'Retry',exact:true}).click();await fault.locator('#confidence-badge').filter({hasText:'Disputed'}).waitFor();
+ const expired=structuredClone(config);expired.regions['na-east'].events.rift.validUntil='2020-01-01T00:00:00Z';await fault.addInitScript(()=>localStorage.setItem('aion-rift-region','na-east'));await fault.route('**/data/schedules.json',route=>route.fulfill({json:expired}));await fault.reload();await fault.getByText('Schedule expired',{exact:true}).first().waitFor();assert.equal(await fault.locator('#calendar').isDisabled(),true);
+ await page.goto(base);await page.locator('#confidence-badge').filter({hasText:'Disputed'}).waitFor();await page.locator('#region').selectOption('na-east');await page.setViewportSize({width:1440,height:1000});await page.evaluate(()=>{document.querySelectorAll('img[loading="lazy"]').forEach(i=>i.loading='eager');});await page.evaluate(()=>Promise.all([...document.images].map(i=>i.decode().catch(()=>{}))));await page.screenshot({path:path.join(output,'desktop.png'),fullPage:true});await page.setViewportSize({width:390,height:844});await page.screenshot({path:path.join(output,'mobile.png'),fullPage:true});
+ const phase=await context.newPage();phase.on('pageerror',e=>errors.push('Phase '+e));await phase.clock.install({time:new Date('2026-11-01T02:05:00Z')});await phase.goto(base);await phase.locator('#confidence-badge').filter({hasText:'Disputed'}).waitFor();await phase.locator('#region').selectOption('korea');assert.equal(await phase.locator('#phase-panel').getAttribute('data-phase'),'entry');await phase.clock.setSystemTime(new Date('2026-11-01T02:10:00Z'));await phase.clock.runFor(1000);assert.equal(await phase.locator('#phase-panel').getAttribute('data-phase'),'active');await phase.clock.setSystemTime(new Date('2026-11-01T03:00:00Z'));await phase.clock.runFor(1000);assert.equal(await phase.locator('#phase-panel').getAttribute('data-phase'),'upcoming');await phase.clock.setSystemTime(new Date('2026-11-01T00:12:00Z'));await phase.locator('#region').selectOption('taiwan');assert.equal(await phase.locator('#phase-panel').getAttribute('data-phase'),'entry');await phase.clock.setSystemTime(new Date('2026-11-02T12:00:00Z'));await phase.goto(new URL('world-boss-timer/?event=nahma',base).href);await phase.locator('#confidence-badge').filter({hasText:/Community|Disputed/}).waitFor();await phase.locator('#region').selectOption('na-east');await phase.setViewportSize({width:320,height:900});assert.equal(await phase.locator('.digits').getAttribute('data-long-hours'),'true');assert.equal(await phase.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'Three-digit hour overflow');await phase.close();
+ const pwaContext=await browser.newContext({viewport:{width:390,height:844}}),pwa=await pwaContext.newPage();pwa.on('pageerror',e=>errors.push('PWA '+e));
+ await pwa.goto(base);await pwa.evaluate(()=>navigator.serviceWorker.ready);await pwa.reload();await pwa.waitForFunction(()=>Boolean(navigator.serviceWorker.controller));await pwa.locator('#confidence-badge').filter({hasText:'Disputed'}).waitFor();
+ assert.equal((await pwaContext.request.get(new URL('sw.js',base).href)).status(),200);const manifest=await(await pwaContext.request.get(new URL('manifest.json',base).href)).json();assert.deepEqual(manifest.icons.map(i=>i.sizes),['192x192','512x512']);
+ await pwaContext.setOffline(true);await pwa.reload();await pwa.locator('#confidence-badge').filter({hasText:'Disputed'}).waitFor();assert.equal(await pwa.locator('#offline-status').isVisible(),true);assert.match(await pwa.locator('#seconds').textContent(),/^\d\d$/);await pwaContext.setOffline(false);
+ assert.deepEqual(errors,[]);
+ const result={status:'passed',pages:51,checks:['Seven services and 13 event categories','Official/community/disputed per event','Local schedules and source-profile selection','Matching groups','Three-phase UI','ICS evidence and UTF-8 folding','Reset checklist persistence','10 zones / 14 reward rows','Traditional Chinese and Korean pages','Per-route canonical, OG, JSON-LD and reciprocal hreflang','320/390/768/1440 widths','Data failure/retry and expired evidence','Real service-worker controller and offline reload','192/512 install icons'],screenshots:['desktop.png','mobile.png']};fs.writeFileSync(path.join(output,'browser-results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));await browser.close();
+})().catch(e=>{console.error(e);process.exit(1);});

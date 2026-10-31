@@ -1,18 +1,3401 @@
 {
-  "version": 1,
+  "version": 2,
   "updatedAt": "2026-10-31T00:00:00Z",
-  "publication": { "enabled": false, "artworkCleared": false },
+  "publication": {
+    "enabled": false,
+    "artworkCleared": false
+  },
   "sources": [
-    { "id": "atlas", "title": "Atlas community timer", "url": "https://aion2atlas.app/rift-timer/", "type": "community" },
-    { "id": "comparison", "title": "Community source comparison", "url": "https://aion2-rifttimer.com/sources/", "type": "community" }
+    {
+      "id": "nc-cycle",
+      "title": "NC: 3 December 2025 cycle update",
+      "url": "https://about.ncsoft.com/news/article/aion2_update_251203",
+      "type": "official"
+    },
+    {
+      "id": "nc-kr",
+      "title": "Korea: 3 December update notes",
+      "url": "https://aion2.plaync.com/ko-kr/board/update/view?articleId=692f3e3834e7dd2024fd53a4",
+      "type": "official"
+    },
+    {
+      "id": "nc-tw",
+      "title": "Taiwan: 3 December update notes",
+      "url": "https://tw.ncsoft.com/aion2/board/update/view?articleId=692f4c48e81e402e6da16915",
+      "type": "official"
+    },
+    {
+      "id": "nc-tw-guide",
+      "title": "Taiwan official Rift guide (15-minute portal)",
+      "url": "https://tw.ncsoft.com/aion2/guidebook/view?title=%E6%99%82%E7%A9%BA%E8%A3%82%E7%B8%AB",
+      "type": "official"
+    },
+    {
+      "id": "shugo",
+      "title": "Shugo service-local event schedules",
+      "url": "https://shugo.gg/timers",
+      "type": "community"
+    },
+    {
+      "id": "metabot",
+      "title": "MetaBot client schedule tables (UTC+9 Global interpretation)",
+      "url": "https://metabot.gg/en/aion-2/events",
+      "type": "community"
+    },
+    {
+      "id": "atlas",
+      "title": "Atlas UTC Global interpretation",
+      "url": "https://aion2atlas.app/rift-timer/",
+      "type": "community"
+    },
+    {
+      "id": "wikily",
+      "title": "Wikily field bosses and spawn locations",
+      "url": "https://wikily.gg/aion-2/bosses/spawn-times",
+      "type": "community"
+    }
   ],
+  "events": {
+    "rift": {
+      "name": "Spacetime Rift",
+      "route": "",
+      "category": "rift"
+    },
+    "daily-reset": {
+      "name": "Daily Reset",
+      "route": "reset-timer/",
+      "category": "reset"
+    },
+    "weekly-reset": {
+      "name": "Weekly Reset",
+      "route": "reset-timer/",
+      "category": "reset"
+    },
+    "shugo": {
+      "name": "Shugo Festival",
+      "route": "shugo-festival/",
+      "category": "event"
+    },
+    "invasion": {
+      "name": "Dimensional Invasion",
+      "route": "dimensional-invasion/",
+      "category": "event"
+    },
+    "battlefield": {
+      "name": "Battlefield / Arena of Tactics",
+      "route": "battlefield/",
+      "category": "pvp"
+    },
+    "artifact": {
+      "name": "Artifact Siege",
+      "route": "artifact-siege/",
+      "category": "siege"
+    },
+    "siege-bosses": {
+      "name": "Siege Bosses",
+      "route": "world-boss-timer/",
+      "category": "boss"
+    },
+    "nahma": {
+      "name": "Guardian Lord Nahma",
+      "route": "world-boss-timer/",
+      "category": "boss"
+    },
+    "kaira": {
+      "name": "Watcher Kaira",
+      "route": "world-boss-timer/",
+      "category": "boss"
+    },
+    "outland": {
+      "name": "Abyss Outland",
+      "route": "abyss-outland/",
+      "category": "pvp"
+    },
+    "argo": {
+      "name": "Argo, the Spirit King",
+      "route": "argo-spirit-king/",
+      "category": "boss"
+    },
+    "domination": {
+      "name": "Spacetime Rift Domination",
+      "route": "rift-domination/",
+      "category": "pvp"
+    }
+  },
   "regions": {
-    "global": { "name": "Global", "zone": "UTC", "status": "provisional", "reviewedAt": null, "sourceIds": ["atlas", "comparison"], "validUntil": null, "rift": { "intervalMinutes": 180, "anchorUtc": "1970-01-01T00:00:00Z" }, "reset": { "dailyHourUTC": 7, "weeklyDayUTC": 3 } },
-    "europe": { "name": "Europe / EU", "zone": "Europe/Berlin", "status": "provisional", "reviewedAt": null, "sourceIds": ["atlas", "comparison"], "validUntil": null, "rift": { "intervalMinutes": 180, "anchorUtc": "1970-01-01T00:00:00Z" }, "reset": { "dailyHourUTC": 7, "weeklyDayUTC": 3 } },
-    "na-east": { "name": "NA East", "zone": "America/New_York", "status": "provisional", "reviewedAt": null, "sourceIds": ["atlas", "comparison"], "validUntil": null, "rift": { "intervalMinutes": 180, "anchorUtc": "1970-01-01T00:00:00Z" }, "reset": { "dailyHourUTC": 7, "weeklyDayUTC": 3 } },
-    "na-west": { "name": "NA West", "zone": "America/Los_Angeles", "status": "provisional", "reviewedAt": null, "sourceIds": ["atlas", "comparison"], "validUntil": null, "rift": { "intervalMinutes": 180, "anchorUtc": "1970-01-01T00:00:00Z" }, "reset": { "dailyHourUTC": 7, "weeklyDayUTC": 3 } },
-    "asia": { "name": "Asia · pending", "zone": "UTC", "status": "pending", "reviewedAt": null, "sourceIds": ["comparison"], "validUntil": null, "rift": null, "reset": null },
-    "korea": { "name": "Korea", "zone": "Asia/Seoul", "status": "provisional", "reviewedAt": null, "sourceIds": ["comparison"], "validUntil": null, "rift": { "intervalMinutes": 180, "anchorUtc": "1970-01-01T02:00:00Z" }, "reset": { "dailyHourUTC": 20, "weeklyDayUTC": 2 } },
-    "taiwan": { "name": "Taiwan", "zone": "Asia/Taipei", "status": "provisional", "reviewedAt": null, "sourceIds": ["comparison"], "validUntil": null, "rift": { "intervalMinutes": 180, "anchorUtc": "1970-01-01T00:00:00Z" }, "reset": { "dailyHourUTC": 21, "weeklyDayUTC": 2 } }
+    "na-east": {
+      "name": "NA East",
+      "zone": "America/New_York",
+      "service": "global",
+      "events": {
+        "rift": {
+          "zone": "America/New_York",
+          "hours": [
+            2,
+            5,
+            8,
+            11,
+            14,
+            17,
+            20,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 60,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot",
+            "atlas"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "entryMinutes": 10,
+          "note": "Global clock sources disagree. Select a published interpretation; this is not live server status.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "hours": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21
+              ],
+              "sourceIds": [
+                "metabot"
+              ]
+            },
+            "utc": {
+              "label": "Atlas · fixed UTC",
+              "zone": "UTC",
+              "hours": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21
+              ],
+              "sourceIds": [
+                "atlas"
+              ]
+            }
+          }
+        },
+        "daily-reset": {
+          "zone": "UTC",
+          "hours": [
+            7
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Community schedule agreement; not an official or in-game observation claim."
+        },
+        "weekly-reset": {
+          "zone": "UTC",
+          "hours": [
+            7
+          ],
+          "minute": 0,
+          "weekdays": [
+            3
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first"
+        },
+        "shugo": {
+          "zone": "America/New_York",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 10,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Hourly cadence agrees across Global references. Duration is the reported event window; minigame round/preparation times can differ.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "invasion": {
+          "zone": "America/New_York",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 30,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 15,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Hourly cadence agrees across Global references. Duration is the reported event window; minigame round/preparation times can differ.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "battlefield": {
+          "zone": "America/New_York",
+          "hours": [
+            11,
+            19
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 120,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Morning end time is disputed: Shugo duration column says 120 min, its description and MetaBot say 11:00–14:00. Morning window shown as 180 min, evening 120 min.",
+          "durationByHour": {
+            "11": 180
+          },
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "artifact": {
+          "zone": "America/New_York",
+          "hours": [
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            1,
+            4,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "siege-bosses": {
+          "zone": "America/New_York",
+          "hours": [
+            21
+          ],
+          "minute": 30,
+          "weekdays": [
+            1,
+            4,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "nahma": {
+          "zone": "America/New_York",
+          "hours": [
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            5,
+            0
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "kaira": {
+          "zone": "America/New_York",
+          "hours": [
+            1,
+            4,
+            7,
+            10,
+            13,
+            16,
+            19,
+            22
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "na-west": {
+      "name": "NA West",
+      "zone": "America/Los_Angeles",
+      "service": "global",
+      "events": {
+        "rift": {
+          "zone": "America/Los_Angeles",
+          "hours": [
+            2,
+            5,
+            8,
+            11,
+            14,
+            17,
+            20,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 60,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot",
+            "atlas"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "entryMinutes": 10,
+          "note": "Global clock sources disagree. Select a published interpretation; this is not live server status.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "hours": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21
+              ],
+              "sourceIds": [
+                "metabot"
+              ]
+            },
+            "utc": {
+              "label": "Atlas · fixed UTC",
+              "zone": "UTC",
+              "hours": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21
+              ],
+              "sourceIds": [
+                "atlas"
+              ]
+            }
+          }
+        },
+        "daily-reset": {
+          "zone": "UTC",
+          "hours": [
+            7
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Community schedule agreement; not an official or in-game observation claim."
+        },
+        "weekly-reset": {
+          "zone": "UTC",
+          "hours": [
+            7
+          ],
+          "minute": 0,
+          "weekdays": [
+            3
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first"
+        },
+        "shugo": {
+          "zone": "America/Los_Angeles",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 10,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Hourly cadence agrees across Global references. Duration is the reported event window; minigame round/preparation times can differ.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "invasion": {
+          "zone": "America/Los_Angeles",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 30,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 15,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Hourly cadence agrees across Global references. Duration is the reported event window; minigame round/preparation times can differ.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "battlefield": {
+          "zone": "America/Los_Angeles",
+          "hours": [
+            11,
+            19
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 120,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Morning end time is disputed: Shugo duration column says 120 min, its description and MetaBot say 11:00–14:00. Morning window shown as 180 min, evening 120 min.",
+          "durationByHour": {
+            "11": 180
+          },
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "artifact": {
+          "zone": "America/Los_Angeles",
+          "hours": [
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            1,
+            4,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "siege-bosses": {
+          "zone": "America/Los_Angeles",
+          "hours": [
+            21
+          ],
+          "minute": 30,
+          "weekdays": [
+            1,
+            4,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "nahma": {
+          "zone": "America/Los_Angeles",
+          "hours": [
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            5,
+            0
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "kaira": {
+          "zone": "America/Los_Angeles",
+          "hours": [
+            1,
+            4,
+            7,
+            10,
+            13,
+            16,
+            19,
+            22
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "europe": {
+      "name": "Europe / EU",
+      "zone": "Europe/Berlin",
+      "service": "global",
+      "events": {
+        "rift": {
+          "zone": "Europe/Berlin",
+          "hours": [
+            2,
+            5,
+            8,
+            11,
+            14,
+            17,
+            20,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 60,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot",
+            "atlas"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "entryMinutes": 10,
+          "note": "Global clock sources disagree. Select a published interpretation; this is not live server status.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "hours": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21
+              ],
+              "sourceIds": [
+                "metabot"
+              ]
+            },
+            "utc": {
+              "label": "Atlas · fixed UTC",
+              "zone": "UTC",
+              "hours": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21
+              ],
+              "sourceIds": [
+                "atlas"
+              ]
+            }
+          }
+        },
+        "daily-reset": {
+          "zone": "UTC",
+          "hours": [
+            7
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Community schedule agreement; not an official or in-game observation claim."
+        },
+        "weekly-reset": {
+          "zone": "UTC",
+          "hours": [
+            7
+          ],
+          "minute": 0,
+          "weekdays": [
+            3
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first"
+        },
+        "shugo": {
+          "zone": "Europe/Berlin",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 10,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Hourly cadence agrees across Global references. Duration is the reported event window; minigame round/preparation times can differ.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "invasion": {
+          "zone": "Europe/Berlin",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 30,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 15,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Hourly cadence agrees across Global references. Duration is the reported event window; minigame round/preparation times can differ.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "battlefield": {
+          "zone": "Europe/Berlin",
+          "hours": [
+            11,
+            19
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 120,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Morning end time is disputed: Shugo duration column says 120 min, its description and MetaBot say 11:00–14:00. Morning window shown as 180 min, evening 120 min.",
+          "durationByHour": {
+            "11": 180
+          },
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "artifact": {
+          "zone": "Europe/Berlin",
+          "hours": [
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            1,
+            4,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "siege-bosses": {
+          "zone": "Europe/Berlin",
+          "hours": [
+            21
+          ],
+          "minute": 30,
+          "weekdays": [
+            1,
+            4,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "nahma": {
+          "zone": "Europe/Berlin",
+          "hours": [
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            5,
+            0
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "kaira": {
+          "zone": "Europe/Berlin",
+          "hours": [
+            1,
+            4,
+            7,
+            10,
+            13,
+            16,
+            19,
+            22
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "latam": {
+      "name": "Latin America",
+      "zone": "America/Sao_Paulo",
+      "service": "global",
+      "events": {
+        "rift": {
+          "zone": "America/Sao_Paulo",
+          "hours": [
+            2,
+            5,
+            8,
+            11,
+            14,
+            17,
+            20,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 60,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot",
+            "atlas"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "entryMinutes": 10,
+          "note": "Global clock sources disagree. Select a published interpretation; this is not live server status.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "hours": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21
+              ],
+              "sourceIds": [
+                "metabot"
+              ]
+            },
+            "utc": {
+              "label": "Atlas · fixed UTC",
+              "zone": "UTC",
+              "hours": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21
+              ],
+              "sourceIds": [
+                "atlas"
+              ]
+            }
+          }
+        },
+        "daily-reset": {
+          "zone": "UTC",
+          "hours": [
+            7
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Community schedule agreement; not an official or in-game observation claim."
+        },
+        "weekly-reset": {
+          "zone": "UTC",
+          "hours": [
+            7
+          ],
+          "minute": 0,
+          "weekdays": [
+            3
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first"
+        },
+        "shugo": {
+          "zone": "America/Sao_Paulo",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 10,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Hourly cadence agrees across Global references. Duration is the reported event window; minigame round/preparation times can differ.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "invasion": {
+          "zone": "America/Sao_Paulo",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 30,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 15,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Hourly cadence agrees across Global references. Duration is the reported event window; minigame round/preparation times can differ.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "battlefield": {
+          "zone": "America/Sao_Paulo",
+          "hours": [
+            11,
+            19
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 120,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Morning end time is disputed: Shugo duration column says 120 min, its description and MetaBot say 11:00–14:00. Morning window shown as 180 min, evening 120 min.",
+          "durationByHour": {
+            "11": 180
+          },
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "artifact": {
+          "zone": "America/Sao_Paulo",
+          "hours": [
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            1,
+            4,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "siege-bosses": {
+          "zone": "America/Sao_Paulo",
+          "hours": [
+            21
+          ],
+          "minute": 30,
+          "weekdays": [
+            1,
+            4,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "nahma": {
+          "zone": "America/Sao_Paulo",
+          "hours": [
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            5,
+            0
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "kaira": {
+          "zone": "America/Sao_Paulo",
+          "hours": [
+            1,
+            4,
+            7,
+            10,
+            13,
+            16,
+            19,
+            22
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "asia": {
+      "name": "Global Asia",
+      "zone": "Asia/Seoul",
+      "service": "global",
+      "events": {
+        "rift": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            2,
+            5,
+            8,
+            11,
+            14,
+            17,
+            20,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 60,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot",
+            "atlas"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "entryMinutes": 10,
+          "note": "Global clock sources disagree. Select a published interpretation; this is not live server status.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "hours": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21
+              ],
+              "sourceIds": [
+                "metabot"
+              ]
+            },
+            "utc": {
+              "label": "Atlas · fixed UTC",
+              "zone": "UTC",
+              "hours": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21
+              ],
+              "sourceIds": [
+                "atlas"
+              ]
+            }
+          }
+        },
+        "daily-reset": {
+          "zone": "UTC",
+          "hours": [
+            7
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Community schedule agreement; not an official or in-game observation claim."
+        },
+        "weekly-reset": {
+          "zone": "UTC",
+          "hours": [
+            7
+          ],
+          "minute": 0,
+          "weekdays": [
+            3
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first"
+        },
+        "shugo": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 10,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Hourly cadence agrees across Global references. Duration is the reported event window; minigame round/preparation times can differ.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "invasion": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 30,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 15,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Hourly cadence agrees across Global references. Duration is the reported event window; minigame round/preparation times can differ.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "battlefield": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            11,
+            19
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 120,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Morning end time is disputed: Shugo duration column says 120 min, its description and MetaBot say 11:00–14:00. Morning window shown as 180 min, evening 120 min.",
+          "durationByHour": {
+            "11": 180
+          },
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "artifact": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            1,
+            4,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "siege-bosses": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            21
+          ],
+          "minute": 30,
+          "weekdays": [
+            1,
+            4,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "nahma": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            5,
+            0
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "kaira": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            1,
+            4,
+            7,
+            10,
+            13,
+            16,
+            19,
+            22
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "korea": {
+      "name": "Korea",
+      "zone": "Asia/Seoul",
+      "service": "korea",
+      "events": {
+        "rift": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            2,
+            5,
+            8,
+            11,
+            14,
+            17,
+            20,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 60,
+          "confidence": "official",
+          "sourceIds": [
+            "nc-cycle",
+            "nc-kr",
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "entryMinutes": 10,
+          "note": "NC documents the three-hour cycle; hours match Shugo. The 10-minute entry / 60-minute event duration is community-reported."
+        },
+        "daily-reset": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            5
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Community schedule agreement; not an official or in-game observation claim."
+        },
+        "weekly-reset": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            5
+          ],
+          "minute": 0,
+          "weekdays": [
+            3
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first"
+        },
+        "shugo": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 10,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Duration is the reported event window; minigame round/preparation times can differ."
+        },
+        "invasion": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 30,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 15,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Duration is the reported event window; minigame round/preparation times can differ."
+        },
+        "battlefield": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            11,
+            20
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 120,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Morning end time is disputed: Shugo duration column says 120 min, its description and MetaBot say 11:00–14:00. Morning window shown as 180 min, evening 120 min.",
+          "durationByHour": {
+            "11": 180
+          }
+        },
+        "artifact": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            21
+          ],
+          "minute": 20,
+          "weekdays": [
+            3,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            30,
+            60
+          ]
+        },
+        "siege-bosses": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            21
+          ],
+          "minute": 45,
+          "weekdays": [
+            3,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            30,
+            60
+          ]
+        },
+        "nahma": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            22
+          ],
+          "minute": 0,
+          "weekdays": [
+            5,
+            0
+          ],
+          "durationMinutes": 30,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            30,
+            60
+          ]
+        },
+        "kaira": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first"
+        },
+        "outland": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            11,
+            20
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 150,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Shugo gives 150 min but describes separate 30-minute matches and a longer evening range. Window is an estimate, not an exact matchmaking feed."
+        },
+        "argo": {
+          "zone": "Asia/Seoul",
+          "hours": [
+            9,
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Shugo reports the 28 October addition. Wednesday maintenance can cancel a spawn; check in game."
+        },
+        "domination": null
+      }
+    },
+    "taiwan": {
+      "name": "Taiwan",
+      "zone": "Asia/Taipei",
+      "service": "taiwan",
+      "events": {
+        "rift": {
+          "zone": "Asia/Taipei",
+          "hours": [
+            2,
+            5,
+            8,
+            11,
+            14,
+            17,
+            20,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 60,
+          "confidence": "official",
+          "sourceIds": [
+            "nc-tw",
+            "nc-tw-guide",
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "entryMinutes": 15,
+          "note": "Official Taiwan guide says 15-minute entry; 60-minute activity duration is community-reported."
+        },
+        "daily-reset": {
+          "zone": "Asia/Taipei",
+          "hours": [
+            5
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Community schedule agreement; not an official or in-game observation claim."
+        },
+        "weekly-reset": {
+          "zone": "Asia/Taipei",
+          "hours": [
+            5
+          ],
+          "minute": 0,
+          "weekdays": [
+            3
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first"
+        },
+        "shugo": {
+          "zone": "Asia/Taipei",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 10,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Duration is the reported event window; minigame round/preparation times can differ."
+        },
+        "invasion": {
+          "zone": "Asia/Taipei",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 30,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 15,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Duration is the reported event window; minigame round/preparation times can differ."
+        },
+        "artifact": {
+          "zone": "Asia/Taipei",
+          "hours": [
+            21
+          ],
+          "minute": 30,
+          "weekdays": [
+            3,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0
+          ]
+        },
+        "siege-bosses": {
+          "zone": "Asia/Taipei",
+          "hours": [
+            21
+          ],
+          "minute": 45,
+          "weekdays": [
+            3,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0
+          ]
+        },
+        "nahma": {
+          "zone": "Asia/Taipei",
+          "hours": [
+            22
+          ],
+          "minute": 0,
+          "weekdays": [
+            5,
+            0
+          ],
+          "durationMinutes": 30,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0
+          ]
+        },
+        "kaira": {
+          "zone": "Asia/Taipei",
+          "hours": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "community-reported",
+          "sourceIds": [
+            "shugo"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first"
+        },
+        "domination": {
+          "zone": "Asia/Taipei",
+          "hours": [
+            20,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            1,
+            4,
+            5
+          ],
+          "durationMinutes": 0,
+          "confidence": "official",
+          "sourceIds": [
+            "nc-tw-guide"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Official Taiwan guide describes these openings; duration is not stated."
+        }
+      }
+    },
+    "global": {
+      "name": "Global · NA East reference",
+      "zone": "America/New_York",
+      "service": "global",
+      "events": {
+        "rift": {
+          "zone": "America/New_York",
+          "hours": [
+            2,
+            5,
+            8,
+            11,
+            14,
+            17,
+            20,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 60,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot",
+            "atlas"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "entryMinutes": 10,
+          "note": "Global clock sources disagree. Select a published interpretation; this is not live server status.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "hours": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21
+              ],
+              "sourceIds": [
+                "metabot"
+              ]
+            },
+            "utc": {
+              "label": "Atlas · fixed UTC",
+              "zone": "UTC",
+              "hours": [
+                0,
+                3,
+                6,
+                9,
+                12,
+                15,
+                18,
+                21
+              ],
+              "sourceIds": [
+                "atlas"
+              ]
+            }
+          }
+        },
+        "daily-reset": {
+          "zone": "UTC",
+          "hours": [
+            7
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Community schedule agreement; not an official or in-game observation claim."
+        },
+        "weekly-reset": {
+          "zone": "UTC",
+          "hours": [
+            7
+          ],
+          "minute": 0,
+          "weekdays": [
+            3
+          ],
+          "durationMinutes": 0,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first"
+        },
+        "shugo": {
+          "zone": "America/New_York",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 10,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Hourly cadence agrees across Global references. Duration is the reported event window; minigame round/preparation times can differ.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "invasion": {
+          "zone": "America/New_York",
+          "hours": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "minute": 30,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 15,
+          "confidence": "community-agreed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Hourly cadence agrees across Global references. Duration is the reported event window; minigame round/preparation times can differ.",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "battlefield": {
+          "zone": "America/New_York",
+          "hours": [
+            11,
+            19
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 120,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "note": "Morning end time is disputed: Shugo duration column says 120 min, its description and MetaBot say 11:00–14:00. Morning window shown as 180 min, evening 120 min.",
+          "durationByHour": {
+            "11": 180
+          },
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        },
+        "artifact": {
+          "zone": "America/New_York",
+          "hours": [
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            1,
+            4,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "siege-bosses": {
+          "zone": "America/New_York",
+          "hours": [
+            21
+          ],
+          "minute": 30,
+          "weekdays": [
+            1,
+            4,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "nahma": {
+          "zone": "America/New_York",
+          "hours": [
+            21
+          ],
+          "minute": 0,
+          "weekdays": [
+            5,
+            0
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily",
+            "metabot"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "groupOffsets": [
+            0,
+            5,
+            10
+          ],
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ],
+              "groupOffsets": [
+                0
+              ]
+            }
+          }
+        },
+        "kaira": {
+          "zone": "America/New_York",
+          "hours": [
+            1,
+            4,
+            7,
+            10,
+            13,
+            16,
+            19,
+            22
+          ],
+          "minute": 0,
+          "weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "durationMinutes": 30,
+          "confidence": "disputed",
+          "sourceIds": [
+            "shugo",
+            "wikily"
+          ],
+          "checkedAt": "2026-10-31T00:00:00Z",
+          "validUntil": null,
+          "fold": "first",
+          "variants": {
+            "unified": {
+              "label": "MetaBot · unified UTC+9",
+              "zone": "Asia/Seoul",
+              "sourceIds": [
+                "metabot"
+              ]
+            }
+          }
+        }
+      },
+      "aliasOf": "na-east"
+    }
   }
 }

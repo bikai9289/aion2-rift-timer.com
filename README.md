@@ -1,92 +1,104 @@
 # Aion 2 Rift Timer
 
-基于已确认的 **V3 电影感界面**开发的静态网站。无需数据库、账号或第三方构建依赖，Node.js 20+ 即可运行。
-
-## 本地启动
+电影感 V3 界面、按服务本地时钟调度的静态工具站。Node.js 20+，构建与运行无需第三方依赖。
 
 ```sh
-npm run dev
-```
-
-打开 http://127.0.0.1:4320/ 。修改 `src/` 后重新构建。原 `python server.py` 也可启动同一套 Node 构建与服务。
-
-```sh
-npm test         # 时间边界、DST、配置与未确认/过期状态
-npm run build    # 生成 dist/
+npm run dev      # 构建并启动 http://127.0.0.1:4320/
+npm run check    # 单元测试 + 构建
+npm run build    # 生成可部署的 dist/
 npm start        # 预览已生成的 dist/
 ```
 
-可选浏览器验收：安装 Playwright（或用 `PLAYWRIGHT_MODULE` 指向已有运行时），启动网站后运行 `npm run test:browser`。`PLAYWRIGHT_EXECUTABLE` 可指定浏览器路径，`TEST_URL` 可指定测试地址。截图与结果写入不入 Git 的 `test-results/`。
+`python server.py` 仍可调用同一套 Node 构建与服务。修改源文件后重新构建。
 
-## 功能
+## 当前能力
 
-- V3 长首页：三场景切换、大号倒计时、浮动计时器、活动画廊与地区时钟。
-- Europe、Asia、每日/每周 Reset 三个独立页面。
-- 区服、本地时间/区域时钟/UTC、未来 4/8 场、浏览器标题倒计时。
-- 提前 5/10/15 分钟提醒、音效测试、通知拒绝时的页内提醒；刷新后不会擅自重新开启通知。
-- ICS 导出：Rift 最多 56 场；Reset 最多 7 个日重置和下次周重置，含提醒。单次导入，不是自动订阅。
-- 个人清单按参考日/周边界清空；偏好仅存本机。
-- 配置校验、过期处理、待核实状态、加载失败与重试。
-- 来源、版权署名、隐私、404；canonical、robots、sitemap、托管响应头和 CI。
-- 无第三方运行时 CDN、分析脚本、登录或支付。
+- 七个服务：NA East / West、Europe、LATAM、Global Asia、Korea、Taiwan。
+- 十三类活动（把日/周重置分开计数），不支持或没有公开规则的服务明确显示缺少时刻表。
+- Rift 三阶段：开启、入场窗口、活动估计边界。台服入口按官方指南为 15 分钟，其他服务按其来源配置；不是玩家个人停留计时。
+- 三种 Global 时间解释可比较：Shugo 本服时钟、MetaBot 统一 UTC+9、Atlas Rift 固定 UTC。来源不一致时明确 Disputed，不伪称游戏内实测。
+- 日/周重置有独立证据等级，Global 为固定 07:00 UTC，韩台为各自 05:00。
+- 匹配组选择器显示实际起始时间，KR Artifact 为 21:20 / 21:50 / 22:20；其他活动/服务使用独立偏移。
+- 本地/服务时钟/UTC、前 4/8 场、提醒、音效、ICS、个人清单和浮动倒计时。
+- 10 个区域、50 个候选位置的来源目录，14 个任务奖励事实表，Lower Reshanta 首领地点。
+- EN / 繁中 / 韩文，共 51 个页面；客户端物品名与原始来源标题可保留英文以便查找。
+- 真实 service worker、192/512 图标、离线提示、安装说明、缓存更新提示。离线支持已保存页面；未保存的页显示明确离线提示。
+- canonical、sitemap、OG/Twitter、BreadcrumbList、首页 WebApplication、互返 hreflang 与来源页。
 
-## 改时间只改一个文件
+不承诺：关掉浏览器后的 Web Push、自动更新的日历订阅、实时游戏状态或所有浏览器自动弹出安装框。浏览器提醒需要分页面打开，后台可能延迟。
 
-编辑 [`src/data/schedules.json`](src/data/schedules.json)，然后重新构建。
+## 数据：本服小时数组 + IANA 时区
 
-| 配置 | 含义 |
-| --- | --- |
-| `zone` | 区域显示时区（IANA）；不代表已确认的服务器时钟 |
-| `rift.anchorUtc` | 某次开放的绝对 UTC 时间 |
-| `rift.intervalMinutes` | 重复周期（分钟） |
-| `reset.dailyHourUTC` | 每日重置的 UTC 小时 |
-| `reset.weeklyDayUTC` | 周重置的 UTC 星期，0=周日 |
-| `status` | `provisional` 演示、`pending` 无数据、`verified` 已核实 |
-| `reviewedAt` | 真实核对日期（UTC）；未核实为 null |
-| `validUntil` | 数据有效期；不会生成超出有效期的场次 |
-| `sourceIds` | 对应文件上方的来源 ID |
+唯一调度配置：`src/data/schedules.json`（version 2）。
 
-Asia 当前为 pending：计时显示 `--`，禁用提醒和日历，不套用其他服务。KR/TW 仍是演示配置，不得把社区资料审阅冒充游戏内实测。
-
-## 当前发布状态
-
-开发版已可构建和部署，**尚未公开发布**。
-
-1. 时刻表含 provisional 数据，尤其 Global / DST 存在分歧，需要真实核实。
-2. 官方宣传图用于设计预览，公开发布权限尚未确认；可替换为你有权使用的图片。
-3. `publication.enabled=false` 时生成 noindex，sitemap 不提交演示页面。
-4. 核对时刻、补 `reviewedAt` 与来源、处理图片权限后，再启用 `publication.artworkCleared` 和 `publication.enabled`。构建会拒绝仍有 provisional 数据的公开发布配置。
-
-## Cloudflare Pages 部署
-
-连接仓库，设置：
-
-- Framework preset：None
-- Build command：`npm run build`
-- Build output directory：`dist`
-- Node version：20 或以上
-
-输出含 `_headers` 和 `/rift-timer/eu` → `/rift-timer/europe/` 的 301 配置。添加自定义域名 `aion2-rift-timer.com` 后，按 Cloudflare 返回的要求配置 DNS。本次开发不自动修改域名或发布线上站点。
-
-## 目录
-
-```text
-src/pages/              页面源文件
-src/styles/             V3 样式
-src/scripts/            共享时间计算和交互
-src/data/schedules.json 唯一时刻表数据源
-public/                 图片、应用清单、图片出处
-scripts/                构建和本地服务
-tests/                  Node 内置测试
-dist/                   可部署输出（自动生成，不入 Git）
-designs/                保留的设计版本
-docs/legacy/            原版 TimeLord 文件
+```json
+{
+  "zone": "Asia/Seoul",
+  "hours": [2, 5, 8, 11, 14, 17, 20, 23],
+  "minute": 0,
+  "weekdays": [0, 1, 2, 3, 4, 5, 6],
+  "durationMinutes": 60,
+  "entryMinutes": 10,
+  "confidence": "official",
+  "sourceIds": ["nc-cycle", "nc-kr", "shugo"],
+  "checkedAt": "2026-10-31T00:00:00Z",
+  "validUntil": null,
+  "fold": "first"
+}
 ```
 
-`scripts/prepare-source.py` 为一次性迁移工具，正常开发不运行（会覆盖源文件）。
+此例的 Official 只对应官方周期依据；入口/活动时长的社区依据在 `note` 中另外说明。
 
-## 署名和许可证
+字段位于 `regions.<服务>.events.<活动>`。`confidence` 为 official / community-agreed / community-reported / disputed / pending，单来源不会冒充“多源一致”。每个活动独立，不再将整区的 provisional 状态套到 Reset。
 
-原作：[TimeLord by dburr](https://github.com/dburr/TimeLord)，声明 CC BY-SA 4.0；原说明在 `docs/UPSTREAM-README.md`。本项目保留署名与许可证通知，详见 [LICENSE.md](LICENSE.md)。第三方游戏图像不在该许可证授权范围内。
+`variants` 保存不同来源的解释；`groupOffsets` 为匹配组的分钟偏移；`durationByHour` 用于战场上午/晚上不同窗口。`null` 表示没有可发布规则，绝不借用别服。
 
-Aion 2 artwork © NC Corporation / NCSOFT，出处见 `public/art-sources.json`。本工具独立于 NCSOFT，无官方背书。
+时区转换对每个当地日期单独计算。DST 缺失时刻跳过，重复时刻默认只使用第一次；这是明确的产品策略，不冒充未观察到的游戏服务器行为。所有到期数据均停用。开着的会话每五分钟尝试刷新数据，校验失败则保留上次有效版本。
+
+区域/任务事实数据在 `src/data/content.json`；翻译字典在 `src/data/locales.json`。`scripts/create-*.py` 是整理数据的维护工具，普通构建不需要 Python，也不会自动重置配置。
+
+## 域名与 SEO
+
+当前用户确认的临时 origin：
+
+`https://aion2-rift-timer.bikai9289.workers.dev`
+
+在 `src/data/site.json` 配置，或在托管平台设置 `SITE_URL` 覆盖它。所有 canonical / sitemap / 分享 URL 使用同一 origin。不要把尚未绑定的域名提前写成正式站址。
+
+当前 sitemap 有完整 51 页；`indexing=false` 和 `publication.enabled=false` 保留预发布 noindex（follow），不是空白 sitemap。
+
+正式域名绑定、时间资料与图片使用条件确认后：
+
+1. 将 `SITE_URL` 改为 `https://aion2-rift-timer.com`。
+2. 确认图片公开使用权或换成有权使用的图片，设置 `publication.artworkCleared=true`。
+3. 设置 `publication.enabled=true`、`site.indexing=true`，重新构建。
+4. 提交新域名的 sitemap，并将临时 origin 重定向到正式域名。
+
+本次代码不自动登录 Cloudflare、绑定 DNS 或改动域名。
+
+## Cloudflare Pages / Workers 静态资源
+
+- Build command：`npm run build`
+- Output directory：`dist`
+- Node：20+
+- `SITE_URL`：当前实际公开 origin
+
+输出含安全响应头、`sw.js` 的 no-cache 配置和 `/rift-timer/eu/` → `/rift-timer/europe/` 的 301。Workers Static Assets 请按实际项目配置 `dist` 为静态资产目录；不要把源码目录当成输出目录。
+
+## 测试
+
+`npm test` 使用 Node 内置测试。浏览器测试使用 Playwright：
+
+```sh
+npm run test:browser
+```
+
+可以通过 `PLAYWRIGHT_MODULE` 指向已有 Playwright 运行时；`PLAYWRIGHT_EXECUTABLE` 指定浏览器，`TEST_URL` 指定测试 origin。结果与截图写入忽略的 `test-results/`。
+
+详细核对、误判说明与修复边界：[docs/REVIEW-AND-FIXES.md](docs/REVIEW-AND-FIXES.md)。
+
+## 署名
+
+原作：[TimeLord by dburr](https://github.com/dburr/TimeLord)，CC BY-SA 4.0；保留原 README 于 `docs/UPSTREAM-README.md`，旧代码于 `docs/legacy/`。参见 [LICENSE.md](LICENSE.md)。
+
+第三方 Aion 2 宣传图 © NC Corporation / NCSOFT，不受代码许可证授权；来源在 `public/art-sources.json`。公开发布权限尚未确认，未据此自动放开收录。工具独立于 NCSOFT。

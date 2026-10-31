@@ -1,0 +1,314 @@
+{
+  "checkedAt": "2026-10-31",
+  "clientBuild": "0.0.4387.0",
+  "note": "Client-derived community reference, not an in-game observation by this site. Counts describe candidate positions, not guaranteed simultaneous portals.",
+  "zones": [
+    {
+      "map": "Altgard",
+      "zone": "Moslan Forest",
+      "possibleSpots": 5,
+      "source": "https://metabot.gg/en/aion-2/map/altgard/rifts"
+    },
+    {
+      "map": "Altgard",
+      "zone": "Root of the Sacred Tree Entrance",
+      "possibleSpots": 5,
+      "source": "https://metabot.gg/en/aion-2/map/altgard/rifts"
+    },
+    {
+      "map": "Altgard",
+      "zone": "Basfelt Ruins",
+      "possibleSpots": 5,
+      "source": "https://metabot.gg/en/aion-2/map/altgard/rifts"
+    },
+    {
+      "map": "Verteron",
+      "zone": "Destroyed Abyss Gate",
+      "possibleSpots": 5,
+      "source": "https://metabot.gg/en/aion-2/map/verteron/rifts"
+    },
+    {
+      "map": "Verteron",
+      "zone": "Forest of Exiles",
+      "possibleSpots": 5,
+      "source": "https://metabot.gg/en/aion-2/map/verteron/rifts"
+    },
+    {
+      "map": "Verteron",
+      "zone": "Southern Altamia Highland",
+      "possibleSpots": 5,
+      "source": "https://metabot.gg/en/aion-2/map/verteron/rifts"
+    },
+    {
+      "map": "Morheim",
+      "zone": "Nephra Snowfield",
+      "possibleSpots": 5,
+      "source": "https://metabot.gg/en/aion-2/map/morheim/rifts"
+    },
+    {
+      "map": "Morheim",
+      "zone": "Iralcig Highland",
+      "possibleSpots": 5,
+      "source": "https://metabot.gg/en/aion-2/map/morheim/rifts"
+    },
+    {
+      "map": "Eltnen",
+      "zone": "Eiron Hill",
+      "possibleSpots": 5,
+      "source": "https://metabot.gg/en/aion-2/map/eltnen/rifts"
+    },
+    {
+      "map": "Eltnen",
+      "zone": "Fractured Land",
+      "possibleSpots": 5,
+      "source": "https://metabot.gg/en/aion-2/map/eltnen/rifts"
+    }
+  ],
+  "quests": [
+    {
+      "id": "spacetime-rift",
+      "faction": "elyos",
+      "name": "Spacetime Rift",
+      "level": 45,
+      "exp": 97797,
+      "kina": 21000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Altgard Traveler",
+      "accessory": "Facade Ring",
+      "kisk": null,
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift"
+    },
+    {
+      "id": "spacetime-rift-not-quite-the-same",
+      "faction": "elyos",
+      "name": "Not Quite the Same",
+      "level": 45,
+      "exp": 97797,
+      "kina": 21000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Give and Take",
+      "accessory": "Facade Bracelet",
+      "kisk": "Personal",
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-not-quite-the-same"
+    },
+    {
+      "id": "spacetime-rift-unfamiliar-material",
+      "faction": "elyos",
+      "name": "Unfamiliar Material",
+      "level": 45,
+      "exp": 97797,
+      "kina": 21000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Early Adopter",
+      "accessory": "Facade Earrings",
+      "kisk": null,
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unfamiliar-material"
+    },
+    {
+      "id": "spacetime-rift-beautiful-carapace",
+      "faction": "elyos",
+      "name": "Beautiful Carapace",
+      "level": 45,
+      "exp": 411483,
+      "kina": 36000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Stay Clear",
+      "accessory": "Wind Breeze Earrings",
+      "kisk": "Party",
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-beautiful-carapace"
+    },
+    {
+      "id": "spacetime-rift-pure-plants",
+      "faction": "elyos",
+      "name": "Pure Plants",
+      "level": 45,
+      "exp": 411483,
+      "kina": 36000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Air Filter",
+      "accessory": "Wind Breeze Ring",
+      "kisk": null,
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-pure-plants"
+    },
+    {
+      "id": "spacetime-rift-perfect-tool",
+      "faction": "elyos",
+      "name": "Perfect Tool",
+      "level": 45,
+      "exp": 961303,
+      "kina": 57000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Secret Stash",
+      "accessory": "Drifter Earrings",
+      "kisk": "Legion",
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-perfect-tool"
+    },
+    {
+      "id": "spacetime-rift-trendsetter",
+      "faction": "elyos",
+      "name": "Trendsetter",
+      "level": 45,
+      "exp": 961303,
+      "kina": 57000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Pandora's Box",
+      "accessory": "Drifter Ring",
+      "kisk": null,
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-trendsetter"
+    },
+    {
+      "id": "spacetime-rift-asmodian",
+      "faction": "asmodian",
+      "name": "Spacetime Rift",
+      "level": 45,
+      "exp": 213118,
+      "kina": 21000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Verteron Traveler",
+      "accessory": "Outsider Ring",
+      "kisk": null,
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-asmodian"
+    },
+    {
+      "id": "spacetime-rift-unknown-species",
+      "faction": "asmodian",
+      "name": "Unknown Species",
+      "level": 45,
+      "exp": 213118,
+      "kina": 21000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Give and Take",
+      "accessory": "Outsider Earrings",
+      "kisk": "Personal",
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unknown-species"
+    },
+    {
+      "id": "spacetime-rift-unfamiliar-material-asmodian",
+      "faction": "asmodian",
+      "name": "Unfamiliar Material",
+      "level": 45,
+      "exp": 213118,
+      "kina": 21000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Early Adopter",
+      "accessory": "Outsider Bracelet",
+      "kisk": null,
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-unfamiliar-material-asmodian"
+    },
+    {
+      "id": "spacetime-rift-difference-between-here-and-there",
+      "faction": "asmodian",
+      "name": "Difference Between Here and There",
+      "level": 45,
+      "exp": 896701,
+      "kina": 36000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Driving the Highway to Hell",
+      "accessory": "Chaser Ring",
+      "kisk": null,
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-difference-between-here-and-there"
+    },
+    {
+      "id": "spacetime-rift-developing-travel-goods",
+      "faction": "asmodian",
+      "name": "Developing Travel Goods",
+      "level": 45,
+      "exp": 896701,
+      "kina": 36000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Stay Clear",
+      "accessory": "Chaser Earrings",
+      "kisk": "Party",
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-developing-travel-goods"
+    },
+    {
+      "id": "spacetime-rift-an-honest-shugo",
+      "faction": "asmodian",
+      "name": "An Honest Shugo",
+      "level": 45,
+      "exp": 935567,
+      "kina": 58000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "Action over Words",
+      "accessory": "Avenger Ring",
+      "kisk": null,
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-an-honest-shugo"
+    },
+    {
+      "id": "spacetime-rift-proof",
+      "faction": "asmodian",
+      "name": "Proof",
+      "level": 45,
+      "exp": 935567,
+      "kina": 58000,
+      "wisdomStone": 1,
+      "daevanionCrystal": 1,
+      "abyssPoints": 2000,
+      "title": "I Believe What I See",
+      "accessory": "Avenger Earrings",
+      "kisk": "Legion",
+      "source": "https://metabot.gg/en/aion-2/quests/spacetime-rift-proof"
+    }
+  ],
+  "bosses": [
+    {
+      "name": "Watcher Kaira",
+      "locations": [
+        "Black Fragments Area - Abandoned Island"
+      ]
+    },
+    {
+      "name": "Guardian Lord Nahma",
+      "locations": [
+        "Reshanta’s Root",
+        "Devastated Remnants - Shade Island",
+        "Black Fragments Area - Lonely Island"
+      ]
+    },
+    {
+      "name": "Executor Tamasa",
+      "locations": [
+        "Reshanta’s Root"
+      ]
+    },
+    {
+      "name": "Executor Argo",
+      "locations": [
+        "Archipelago of Siel’s Wings - Siel’s Heart"
+      ]
+    },
+    {
+      "name": "Executor Kaira",
+      "locations": [
+        "Sulfur Tree Island - Branding Island"
+      ]
+    }
+  ],
+  "bossSource": "https://wikily.gg/aion-2/bosses/spawn-times"
+}
