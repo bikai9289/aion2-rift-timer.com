@@ -197,7 +197,8 @@
                 "atlas"
               ]
             }
-          }
+          },
+          "entryConfidence": "community-reported"
         },
         "daily-reset": {
           "zone": "UTC",
@@ -414,7 +415,6 @@
           "confidence": "disputed",
           "sourceIds": [
             "shugo",
-            "wikily",
             "metabot"
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
@@ -632,7 +632,8 @@
                 "atlas"
               ]
             }
-          }
+          },
+          "entryConfidence": "community-reported"
         },
         "daily-reset": {
           "zone": "UTC",
@@ -849,7 +850,6 @@
           "confidence": "disputed",
           "sourceIds": [
             "shugo",
-            "wikily",
             "metabot"
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
@@ -1067,7 +1067,8 @@
                 "atlas"
               ]
             }
-          }
+          },
+          "entryConfidence": "community-reported"
         },
         "daily-reset": {
           "zone": "UTC",
@@ -1284,7 +1285,6 @@
           "confidence": "disputed",
           "sourceIds": [
             "shugo",
-            "wikily",
             "metabot"
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
@@ -1502,7 +1502,8 @@
                 "atlas"
               ]
             }
-          }
+          },
+          "entryConfidence": "community-reported"
         },
         "daily-reset": {
           "zone": "UTC",
@@ -1719,7 +1720,6 @@
           "confidence": "disputed",
           "sourceIds": [
             "shugo",
-            "wikily",
             "metabot"
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
@@ -1937,7 +1937,8 @@
                 "atlas"
               ]
             }
-          }
+          },
+          "entryConfidence": "community-reported"
         },
         "daily-reset": {
           "zone": "UTC",
@@ -2154,7 +2155,6 @@
           "confidence": "disputed",
           "sourceIds": [
             "shugo",
-            "wikily",
             "metabot"
           ],
           "checkedAt": "2026-10-31T00:00:00Z",
@@ -2336,7 +2336,8 @@
           "validUntil": null,
           "fold": "first",
           "entryMinutes": 10,
-          "note": "NC documents the three-hour cycle; hours match Shugo. The 10-minute entry / 60-minute event duration is community-reported."
+          "note": "NC documents the three-hour cycle; hours match Shugo. The 10-minute entry / 60-minute event duration is community-reported.",
+          "entryConfidence": "community-reported"
         },
         "daily-reset": {
           "zone": "Asia/Seoul",
@@ -2632,7 +2633,9 @@
           "checkedAt": "2026-10-31T00:00:00Z",
           "validUntil": null,
           "fold": "first",
-          "note": "Shugo gives 150 min but describes separate 30-minute matches and a longer evening range. Window is an estimate, not an exact matchmaking feed."
+          "note": "Shugo gives 150 min but describes separate 30-minute matches and a longer evening range. Window is an estimate, not an exact matchmaking feed.",
+          "windowApproximate": true,
+          "matchMinutes": 30
         },
         "argo": {
           "zone": "Asia/Seoul",
@@ -2701,7 +2704,8 @@
           "validUntil": null,
           "fold": "first",
           "entryMinutes": 15,
-          "note": "Official Taiwan guide says 15-minute entry; 60-minute activity duration is community-reported."
+          "note": "Official Taiwan guide says 15-minute entry; 60-minute activity duration is community-reported.",
+          "entryConfidence": "official"
         },
         "daily-reset": {
           "zone": "Asia/Taipei",
@@ -3035,7 +3039,8 @@
                 "atlas"
               ]
             }
-          }
+          },
+          "entryConfidence": "community-reported"
         },
         "daily-reset": {
           "zone": "UTC",
@@ -3252,7 +3257,6 @@
           "confidence": "disputed",
           "sourceIds": [
             "shugo",
-            "wikily",
             "metabot"
           ],
           "checkedAt": "2026-10-31T00:00:00Z",

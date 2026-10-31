@@ -12,5 +12,15 @@ test('service-exclusive routes default to supported services with no EU identity
 });
 test('visible H1 matches the tool, sitemap is focused and homepage does not have one-item breadcrumbs',()=>{
  for(const[route,phrase]of[['','Aion 2'],['reset-timer/','Reset Timer'],['rift-timer/europe/','Europe'],['rift-timer/korea/','Korea'],['rift-timer/taiwan/','Taiwan']]){const h1=html(route).match(/<h1>([\s\S]*?)<\/h1>/)[1];assert.ok(h1.includes(phrase));assert.doesNotMatch(h1,/sr-only/);}
- const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');assert.doesNotMatch(sitemap,/\/zh-Hant\/|\/ko\/|\/credits\/|\/privacy\//);assert.equal((sitemap.match(/<url>/g)||[]).length,17);assert.doesNotMatch(html(''),/'@type':'BreadcrumbList'|"@type":"BreadcrumbList"/);assert.match(html('rift-timer/korea/'),/hreflang="ko"/);
+ const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');assert.doesNotMatch(sitemap,/\/zh-Hant\/|\/ko\/|\/credits\/|\/privacy\//);assert.equal((sitemap.match(/<url>/g)||[]).length,17);assert.doesNotMatch(html(''),/'@type':'BreadcrumbList'|"@type":"BreadcrumbList"/);assert.doesNotMatch(html('rift-timer/korea/'),/hreflang|language-links/);
+});
+test('retired language routes have no links, alternates or offline precache; Korean/Taiwan copy is specific',()=>{
+ for(const route of routes)assert.doesNotMatch(html(route),/hreflang|language-links|href="\/(?:ko|zh-Hant)\//);
+ assert.equal(fs.existsSync('dist/ko'),false);assert.equal(fs.existsSync('dist/zh-Hant'),false);assert.doesNotMatch(fs.readFileSync('dist/sw.js','utf8'),/\/zh-Hant\/|\/ko\//);
+ for(const service of['korea','taiwan'])assert.doesNotMatch(html('rift-timer/'+service+'/'),/EU schedule\. Local time/);
+ assert.match(html('rift-timer/korea/'),/Cycle · Official \/ Entry window · Community-reported/);
+ assert.match(html('rift-timer/taiwan/'),/Cycle · Official \/ Entry window · Official/);
+ const boss=html('world-boss-timer/');for(const name of['Executor Tamasa','Executor Argo','Executor Kaira'])assert.match(boss,new RegExp('<td>'+name+'</td>'));
+ assert.match(html('abyss-outland/'),/≈ 150 min window · ≈ 30 min per match/);
+ assert.match(html('credits/'),/Publication permission has not been established/);
 });

@@ -46,7 +46,7 @@ for key,name,zone in [('na-east','NA East','America/New_York'),('na-west','NA We
  if key!='taiwan':
   event['battlefield']=rule(zone,[11,20] if key=='korea' else [11,19],duration=120,confidence='disputed',sourceIds=['shugo','metabot'],note='Morning end time is disputed: Shugo duration column says 120 min, its description and MetaBot say 11:00–14:00. Morning window shown as 180 min, evening 120 min.',durationByHour={'11':180})
  if global_service:
-  event['artifact']=rule(zone,[21],days=[1,4,6],duration=30,confidence='disputed',sourceIds=['shugo','wikily','metabot'],groupOffsets=[0,5,10])
+  event['artifact']=rule(zone,[21],days=[1,4,6],duration=30,confidence='disputed',sourceIds=['shugo','metabot'],groupOffsets=[0,5,10])
   event['siege-bosses']=rule(zone,[21],minute=30,days=[1,4,6],duration=30,confidence='disputed',sourceIds=['shugo','wikily','metabot'],groupOffsets=[0,5,10])
   event['nahma']=rule(zone,[21],days=[5,0],duration=30,confidence='disputed',sourceIds=['shugo','wikily','metabot'],groupOffsets=[0,5,10])
  else:
@@ -64,11 +64,13 @@ for key,name,zone in [('na-east','NA East','America/New_York'),('na-west','NA We
   for eid,r in event.items():
    if r and eid not in ('rift','daily-reset','weekly-reset'):
     r['variants']={'unified':dict(label='MetaBot · unified UTC+9',zone='Asia/Seoul',sourceIds=['metabot'],**({'groupOffsets':[0]} if 'groupOffsets' in r else {}))}
+ event['rift']['entryConfidence']='official' if key=='taiwan' else 'community-reported'
+ if key=='korea':event['outland'].update(windowApproximate=True,matchMinutes=30)
  for r in event.values():
   if r and r['confidence']=='community-agreed' and len(r['sourceIds'])==1:r['confidence']='community-reported'
  regions[key]=dict(name=name,zone=zone,service='global' if global_service else key,events=event)
 regions['global']=deepcopy(regions['na-east']);regions['global']['name']='Global · NA East reference';regions['global']['aliasOf']='na-east'
 data=dict(version=2,updatedAt=checked,publication=dict(enabled=False,artworkCleared=False),sources=sources,events=events,regions=regions)
 (root/'src/data/schedules.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-(root/'src/data/site.json').write_text(json.dumps(dict(url='https://aion2-rift-timer.bikai9289.workers.dev',indexing=False,languages=['en','zh-Hant','ko']),indent=2)+'\n',encoding='utf-8')
+# Site origin/language/indexing are operator-maintained; never overwrite them here.
 print('Wrote v2 service-local rules, source interpretations and 13 event categories.')

@@ -21,7 +21,7 @@ npm start        # 预览已生成的 dist/
 - 匹配组选择器显示实际起始时间，KR Artifact 为 21:20 / 21:50 / 22:20；其他活动/服务使用独立偏移。
 - 本地/服务时钟/UTC、前 4/8 场、提醒、音效、ICS、个人清单和浮动倒计时。
 - 10 个区域、50 个候选位置的来源目录，14 个任务奖励事实表，Lower Reshanta 首领地点。
-- EN / 繁中 / 韩文，共 57 个页面，含独立 Korea / Taiwan Rift 落地页；客户端物品名与原始来源标题可保留英文以便查找。
+- 当前仅英文，共 19 个页面，含独立 Korea / Taiwan Rift 落地页；客户端物品名与原始来源标题可保留英文以便查找。
 - 真实 service worker、192/512 图标、离线提示、安装说明、缓存更新提示。离线支持已保存页面；未保存的页显示明确离线提示。
 - canonical、sitemap、OG/Twitter、BreadcrumbList、首页 WebApplication、互返 hreflang 与来源页。
 
@@ -65,7 +65,7 @@ npm start        # 预览已生成的 dist/
 
 在 `src/data/site.json` 配置，或在托管平台设置 `SITE_URL` 覆盖它。所有 canonical / sitemap / 分享 URL 使用同一 origin。不要把尚未绑定的域名提前写成正式站址。
 
-当前 sitemap 聚焦 17 个英文内容页，不列繁中/韩文及 credits/privacy；这些页面仍可访问并保持三语 hreflang。`indexing=false` 和 `publication.enabled=false` 保留预发布 noindex（follow），不是空白 sitemap。
+当前 sitemap 聚焦 17 个英文内容页，不列繁中/韩文及 credits/privacy；非英文路由暂不生成，语言入口、hreflang 和非英文预缓存均停用；翻译源文件保留。`indexing=false` 和 `publication.enabled=false` 保留预发布 noindex（follow），不是空白 sitemap。
 
 所有工具页在 HTML 中直接输出对应服务的已公佈时刻表，关闭 JavaScript 仍能读到数字和活动入口。脚本成功启动后再接管未来场次及实时倒计时。共享工具目录使用原生链接，不依赖按钮事件。
 
@@ -97,7 +97,7 @@ npm run test:browser
 
 可以通过 `PLAYWRIGHT_MODULE` 指向已有 Playwright 运行时；`PLAYWRIGHT_EXECUTABLE` 指定浏览器，`TEST_URL` 指定测试 origin。结果与截图写入忽略的 `test-results/`。
 
-数据层核对与边界：[docs/REVIEW-AND-FIXES.md](docs/REVIEW-AND-FIXES.md)。第二轮表现层修复与验收：[docs/PRESENTATION-AUDIT.md](docs/PRESENTATION-AUDIT.md)。
+数据层核对与边界：[docs/REVIEW-AND-FIXES.md](docs/REVIEW-AND-FIXES.md)。最近的模板修复见 [docs/FINAL-TEMPLATE-AUDIT.md](docs/FINAL-TEMPLATE-AUDIT.md)。第二轮表现层历史验收：[docs/PRESENTATION-AUDIT.md](docs/PRESENTATION-AUDIT.md)。
 
 ## 署名
 
