@@ -6,8 +6,11 @@ const bossQuery=new URL(location.href).searchParams.get('event');
 const pageEvent=document.body.dataset.eventGroup==='boss'&&['kaira','nahma','siege-bosses'].includes(bossQuery)?bossQuery:(document.body.dataset.event||(mode==='reset'?'daily-reset':'rift'));
 function read(key,fallback){try{return localStorage.getItem('aion-rift-'+key)||fallback;}catch{return fallback;}}
 function save(key,value){try{localStorage.setItem('aion-rift-'+key,value);}catch{}}
-let region=document.body.dataset.pageRegion==='global'?read('region','na-east'):document.body.dataset.pageRegion;
-if(region==='global'||!Object.hasOwn(regions,region))region='na-east';
+const pageDefault=document.body.dataset.pageRegion==='global'?'na-east':document.body.dataset.pageRegion;
+const allowedServices=(document.body.dataset.scheduleServices||'').split(',').filter(Boolean);
+let region=document.body.dataset.useStoredRegion==='true'?read('region',pageDefault):pageDefault;
+if(region==='global'||!Object.hasOwn(regions,region)||allowedServices.length&&!allowedServices.includes(region))region=pageDefault||'na-east';
+document.documentElement.classList.add('schedule-enhanced');
 let zoneMode=read('zone','local');if(!['local','service','utc'].includes(zoneMode))zoneMode='local';
 let profile=read('profile','regional');if(!['regional','unified','utc'].includes(profile))profile='regional';
 let group=Number(read('group','1'));if(![1,2,3].includes(group))group=1;
@@ -92,7 +95,7 @@ function syncControls(){
  if(el('matching-group')){const artifact=selectedRule('artifact'),offsets=artifact?.groupOffsets||[0],count=offsets.length;el('matching-group').disabled=count===1;for(const option of el('matching-group').options){const index=Number(option.value)-1;option.disabled=index>=count;const total=artifact?artifact.hours[0]*60+artifact.minute+(offsets[index]||0):null;option.textContent=t('Group '+option.value)+(total!==null?' · '+String(Math.floor(total/60)%24).padStart(2,'0')+':'+String(total%60).padStart(2,'0'):'');}el('matching-group').value=String(Math.min(group,count));}
  renderEvidence(selectedRule());
 }
-function setRegion(value){region=Object.hasOwn(regions,value)&&value!=='global'?value:'na-east';save('region',region);notified='';if(mode==='reset')loadChecks(Date.now());syncControls();tick();}
+function setRegion(value){region=Object.hasOwn(regions,value)&&value!=='global'&&(!allowedServices.length||allowedServices.includes(value))?value:pageDefault||'na-east';save('region',region);notified='';if(mode==='reset')loadChecks(Date.now());syncControls();tick();}
 function setZone(value){zoneMode=['local','service','utc'].includes(value)?value:'local';save('zone',zoneMode);document.querySelectorAll('[data-zone]').forEach(button=>{const selected=button.dataset.zone===zoneMode;button.classList.toggle('selected',selected);button.setAttribute('aria-pressed',String(selected));});tick();}
 el('region').addEventListener('change',()=>setRegion(el('region').value));
 document.querySelectorAll('[data-zone]').forEach(button=>button.addEventListener('click',()=>setZone(button.dataset.zone)));
@@ -119,7 +122,6 @@ function makeCalendar(now=Date.now()){
 el('calendar').addEventListener('click',()=>{try{const url=URL.createObjectURL(new Blob([makeCalendar()],{type:'text/calendar;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download=pageEvent+'-'+region+'-'+profile+'.ics';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);toast(t('Calendar downloaded. One-time import, not a subscription.'));}catch{toast(t('No schedule available to export.'));}});
 document.querySelectorAll('[data-check]').forEach(input=>input.addEventListener('change',()=>{checks[input.dataset.check]=input.checked;save('checks-'+region,JSON.stringify(checks));}));
 if(el('clear-checklist'))el('clear-checklist').addEventListener('click',()=>{document.querySelectorAll('[data-check]').forEach(input=>{input.checked=false;checks[input.dataset.check]=false;});save('checks-'+region,JSON.stringify(checks));toast(t('Personal checks cleared.'));});
-document.querySelectorAll('[data-tool]').forEach(button=>button.addEventListener('click',()=>location.href=pageURL({boss:'world-boss-timer/',shugo:'shugo-festival/',siege:'artifact-siege/'}[button.dataset.tool]||'')));
 el('device-zone').textContent=deviceZone.replaceAll('_',' ');setRegion(region);setZone(zoneMode);setInterval(tick,1000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick();});
 // Long-running game sessions should pick up a published correction without restarting the tab.
 async function refreshSchedules(){
