@@ -68,6 +68,7 @@ rows += [
 ('Check the world map when an opening is scheduled, then confirm the available portal in game. Our location directory lists ten candidate zones across four maps, with five possible positions in each zone. The separate rewards table covers fourteen level-45 faction quests. Use those references alongside the reset checklist to prepare before you travel.','預定開啟時請查看世界地圖，在遊戲中確認可用入口。位置目錄列出四張地圖的十個候選區域，每區五個可能位置。獎勵表則整理十四個 45 級種族任務；可搭配重置清單規劃出發前的準備。','예정 시간에 월드 지도를 열어 게임에서 실제 포털을 확인하세요. 위치 목록은 네 지도에 걸친 10개 후보 지역과 지역당 5개 가능 위치를 보여 줍니다. 보상 표는 레벨 45 종족 퀘스트 14개를 담고 있습니다. 초기화 체크리스트와 함께 출발을 준비하세요.'),
 ('Korea Rift Timer','韓服裂縫計時','한국 균열 타이머'),('Taiwan Rift Timer','台服裂縫計時','대만 균열 타이머')
 ]
+rows += [('Your time','你的時間','내 현지 시각'),('Region display time','地區顯示時間','지역 표시 시각'),('Schedule clock','排程時鐘','일정 기준 시계'),('Regional-clock interpretation','本服時鐘方案','서비스 현지 시계 해석'),('Unified UTC+9 interpretation','統一 UTC+9 方案','통합 UTC+9 해석'),('Fixed-UTC interpretation','固定 UTC 方案','고정 UTC 해석'),('Sources disagree about the schedule clock. Compare the published interpretations.','來源對排程時鐘有分歧，請比較已公佈的方案。','출처마다 일정 기준 시계가 다릅니다. 공개된 해석을 비교하세요.')]
 locales={'en':{},'zh-Hant':{en:zh for en,zh,ko in rows},'ko':{en:ko for en,zh,ko in rows}}
 (root/'src/data/locales.json').write_text(json.dumps(locales,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print('Wrote shared Traditional Chinese / Korean UI dictionaries.')

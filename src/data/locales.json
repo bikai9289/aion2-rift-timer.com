@@ -366,7 +366,14 @@
     "Global sources disagree about the clock behind the schedule. Shugo publishes service-local hours, MetaBot describes a shared UTC+9 clock, and Atlas uses UTC for Rifts. The latter two produce the same repeating Rift instants. Local-clock interpretations can diverge around daylight saving changes, so compare the source labels instead of assuming every region is confirmed.": "國際服來源對排程時鐘有分歧。Shugo 使用本服時間，MetaBot 描述共用 UTC+9 時鐘，Atlas 則以 UTC 列出裂縫時間。後兩者的重複裂縫瞬時相同。本服時鐘解釋可能在夏令時間切換時分叉，請比較來源，不要假設所有地區都已確認。",
     "Check the world map when an opening is scheduled, then confirm the available portal in game. Our location directory lists ten candidate zones across four maps, with five possible positions in each zone. The separate rewards table covers fourteen level-45 faction quests. Use those references alongside the reset checklist to prepare before you travel.": "預定開啟時請查看世界地圖，在遊戲中確認可用入口。位置目錄列出四張地圖的十個候選區域，每區五個可能位置。獎勵表則整理十四個 45 級種族任務；可搭配重置清單規劃出發前的準備。",
     "Korea Rift Timer": "韓服裂縫計時",
-    "Taiwan Rift Timer": "台服裂縫計時"
+    "Taiwan Rift Timer": "台服裂縫計時",
+    "Your time": "你的時間",
+    "Region display time": "地區顯示時間",
+    "Schedule clock": "排程時鐘",
+    "Regional-clock interpretation": "本服時鐘方案",
+    "Unified UTC+9 interpretation": "統一 UTC+9 方案",
+    "Fixed-UTC interpretation": "固定 UTC 方案",
+    "Sources disagree about the schedule clock. Compare the published interpretations.": "來源對排程時鐘有分歧，請比較已公佈的方案。"
   },
   "ko": {
     "Rift timer": "균열 타이머",
@@ -734,6 +741,13 @@
     "Global sources disagree about the clock behind the schedule. Shugo publishes service-local hours, MetaBot describes a shared UTC+9 clock, and Atlas uses UTC for Rifts. The latter two produce the same repeating Rift instants. Local-clock interpretations can diverge around daylight saving changes, so compare the source labels instead of assuming every region is confirmed.": "글로벌 출처들은 일정의 기준 시계에 동의하지 않습니다. Shugo는 서비스 현지 시각, MetaBot은 공통 UTC+9, Atlas는 균열에 UTC를 사용합니다. 뒤의 두 방식은 같은 반복 균열 시점을 만듭니다. 현지 시계 해석은 서머타임 전환에 달라질 수 있으므로 출처를 비교하세요.",
     "Check the world map when an opening is scheduled, then confirm the available portal in game. Our location directory lists ten candidate zones across four maps, with five possible positions in each zone. The separate rewards table covers fourteen level-45 faction quests. Use those references alongside the reset checklist to prepare before you travel.": "예정 시간에 월드 지도를 열어 게임에서 실제 포털을 확인하세요. 위치 목록은 네 지도에 걸친 10개 후보 지역과 지역당 5개 가능 위치를 보여 줍니다. 보상 표는 레벨 45 종족 퀘스트 14개를 담고 있습니다. 초기화 체크리스트와 함께 출발을 준비하세요.",
     "Korea Rift Timer": "한국 균열 타이머",
-    "Taiwan Rift Timer": "대만 균열 타이머"
+    "Taiwan Rift Timer": "대만 균열 타이머",
+    "Your time": "내 현지 시각",
+    "Region display time": "지역 표시 시각",
+    "Schedule clock": "일정 기준 시계",
+    "Regional-clock interpretation": "서비스 현지 시계 해석",
+    "Unified UTC+9 interpretation": "통합 UTC+9 해석",
+    "Fixed-UTC interpretation": "고정 UTC 해석",
+    "Sources disagree about the schedule clock. Compare the published interpretations.": "출처마다 일정 기준 시계가 다릅니다. 공개된 해석을 비교하세요."
   }
 }

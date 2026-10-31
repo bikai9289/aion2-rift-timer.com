@@ -29,6 +29,11 @@ function toast(message){clearTimeout(toastTimer);el('toast').textContent=message
 function remaining(date,now){const mins=Math.max(0,Math.ceil((+date-now)/60000)),hours=Math.floor(mins/60);return hours?hours+'h '+mins%60+'m':mins+'m';}
 const confidenceName=confidence=>t({'official':'Official','community-agreed':'Community-agreed','community-reported':'Community-reported','disputed':'Disputed','pending':'Pending'}[confidence]||'Pending');
 const phaseName=phase=>t({entry:'Entry closes in',active:'Activity ends in',upcoming:'Next opening in',unavailable:'No published schedule for this service',expired:'Schedule expired'}[phase]||'Next opening in');
+function interpretationName(rule){
+ if(!rule)return confidenceName('pending');
+ if(rule.confidence!=='disputed')return confidenceName(rule.confidence);
+ return t({'regional':'Regional-clock interpretation','unified':'Unified UTC+9 interpretation','utc':'Fixed-UTC interpretation'}[rule.profile]||'Regional-clock interpretation');
+}
 function renderOpenings(dates,now,rule){
  if(!el('openings'))return;
  const key=(dates[0]?.getTime()||'none')+region+zoneMode+profile+group+expanded;
@@ -49,11 +54,12 @@ function loadChecks(now){
  save('checks-'+region,JSON.stringify(checks));document.querySelectorAll('[data-check]').forEach(input=>input.checked=checks[input.dataset.check]===true);
 }
 function renderEvidence(rule){
- const badge=el('confidence-badge');if(badge){badge.textContent=confidenceName(rule?.confidence);badge.dataset.grade=rule?.confidence||'pending';}
+ const badge=el('confidence-badge');if(badge){badge.textContent=interpretationName(rule);badge.dataset.grade=rule?.confidence||'pending';badge.title=rule?.confidence==='disputed'?t('Sources disagree about the schedule clock. Compare the published interpretations.') : confidenceName(rule?.confidence);}
  const evidence=el('rule-evidence');if(!evidence)return;
  evidence.replaceChildren();
  if(!rule){evidence.textContent=t('Not scheduled for this service');return;}
  const text=document.createElement('p');text.textContent=t(rule.note||'Published schedule estimate. Check availability in game.');evidence.append(text);
+ if(rule.confidence==='disputed'){const disagreement=document.createElement('p');disagreement.textContent=t('Sources disagree about the schedule clock. Compare the published interpretations.');evidence.append(disagreement);}
  const review=document.createElement('p');review.textContent=t('Reviewed')+': '+rule.checkedAt.slice(0,10)+' · '+rule.zone;evidence.append(review);
  for(const id of rule.sourceIds){const source=scheduleData.sources.find(s=>s.id===id);if(source){const a=document.createElement('a');a.href=source.url;a.target='_blank';a.rel='noopener';a.textContent=source.title+' ↗';evidence.append(a);}}
 }
@@ -76,13 +82,18 @@ function renderBoard(now){
 }
 function tick(){
  const now=Date.now(),rule=selectedRule(),state=RiftSchedule.state(rule,now),dates=datesAfter(now),enabled=Boolean(state.target);
- document.querySelectorAll('.hero-timer-label>span,.example-tag').forEach(node=>node.textContent=confidenceName(rule?.confidence));
+ document.querySelectorAll('.hero-timer-label>span,.example-tag').forEach(node=>node.textContent=interpretationName(rule));
  const heroLabel=document.querySelector('.hero-timer-label,.timer-label');if(heroLabel){const text=[...heroLabel.childNodes].find(node=>node.nodeType===Node.TEXT_NODE&&node.textContent.trim());if(text)text.textContent=phaseName(state.phase)+' ';}
  for(const id of['calendar','alert-open','enable-alerts'])if(el(id))el(id).disabled=!enabled;
  document.querySelectorAll('[data-check]').forEach(input=>input.disabled=!enabled);if(el('clear-checklist'))el('clear-checklist').disabled=!enabled;
  if(el('countdown-heading'))el('countdown-heading').textContent=eventName(pageEvent)+' · '+confidenceName(rule?.confidence);
- if(enabled){const seconds=Math.max(0,Math.ceil((+state.target-now)/1000));document.querySelector('.digits').dataset.longHours=String(seconds>=360000);el('hours').textContent=String(Math.floor(seconds/3600)).padStart(2,'0');el('minutes').textContent=String(Math.floor(seconds/60)%60).padStart(2,'0');el('seconds').textContent=String(seconds%60).padStart(2,'0');el('next-time').textContent=state.next?t('Next scheduled time')+': '+clock(state.next)+' · '+day(state.next):'—';el('next-zone').textContent=regions[region].name+' / '+(state.next?zoneShort(state.next):rule.zone);renderOpenings(dates,now,rule);}
- else{['hours','minutes','seconds'].forEach(id=>el(id).textContent='--');el('next-time').textContent=phaseName(state.phase);el('next-zone').textContent=regions[region].name;if(el('openings')){el('openings').textContent=t('Not scheduled for this service');rendered='';}if(el('schedule-note'))el('schedule-note').textContent=t('No fallback to another service.');if(activeAlerts){activeAlerts=false;el('enable-alerts').textContent=t('Enable alerts');}}
+ if(enabled){const seconds=Math.max(0,Math.ceil((+state.target-now)/1000));document.querySelector('.digits').dataset.longHours=String(seconds>=360000);el('hours').textContent=String(Math.floor(seconds/3600)).padStart(2,'0');el('minutes').textContent=String(Math.floor(seconds/60)%60).padStart(2,'0');el('seconds').textContent=String(seconds%60).padStart(2,'0');el('next-time').textContent=state.next?t('Next scheduled time')+': '+clock(state.next)+' · '+day(state.next):'—';
+  const displayLabel=zoneMode==='local'?t('Your time'):zoneMode==='utc'?'UTC':t('Region display time');
+  el('next-zone').textContent=state.next?displayLabel+' ('+zoneShort(state.next)+', '+displayZone()+')':'';
+  let equivalent=el('schedule-equivalent');if(!equivalent){equivalent=document.createElement('span');equivalent.id='schedule-equivalent';el('next-zone').after(equivalent);}
+  equivalent.textContent=state.next?'= '+clock(state.next,rule.zone)+' · '+day(state.next,rule.zone)+' — '+t('Schedule clock')+' ('+rule.zone+', '+zoneShort(state.next,rule.zone)+') · '+t('Service')+': '+regions[region].name:'';
+  renderOpenings(dates,now,rule);}
+ else{['hours','minutes','seconds'].forEach(id=>el(id).textContent='--');el('next-time').textContent=phaseName(state.phase);el('next-zone').textContent=regions[region].name;if(el('schedule-equivalent'))el('schedule-equivalent').textContent='';if(el('openings')){el('openings').textContent=t('Not scheduled for this service');rendered='';}if(el('schedule-note'))el('schedule-note').textContent=t('No fallback to another service.');if(activeAlerts){activeAlerts=false;el('enable-alerts').textContent=t('Enable alerts');}}
  renderPhases(state,rule);renderBoard(now);
  if(mode==='reset'){const daily=resetAfter(now),weekly=resetAfter(now,true);for(const[id,date]of[['daily',daily],['weekly',weekly]]){el(id+'-clock').textContent=date?(id==='daily'?clock(date)+' '+zoneShort(date):remaining(date,now)):t('Not scheduled for this service');el(id+'-date').textContent=date?day(date)+' · '+clock(date)+' · '+displayZone():'';}if(daily&&weekly&&(checks.dailyBoundary!==daily.toISOString()||checks.weeklyBoundary!==weekly.toISOString()))loadChecks(now);}
  if(el('berlin-time')){el('berlin-time').textContent=state.next?clock(state.next,'Europe/Berlin'):'—';el('london-time').textContent=state.next?clock(state.next,'Europe/London'):'—';}
