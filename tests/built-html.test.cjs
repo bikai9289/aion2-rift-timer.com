@@ -22,13 +22,19 @@ test('retired language routes have no links, alternates or offline precache; Kor
  assert.match(html('rift-timer/taiwan/'),/Cycle · Official \/ Entry window · Official/);
  const boss=html('world-boss-timer/');for(const name of['Executor Tamasa','Executor Argo','Executor Kaira'])assert.match(boss,new RegExp('<td>'+name+'</td>'));
  assert.match(html('abyss-outland/'),/≈ 150 min window · ≈ 30 min per match/);
- assert.match(html('credits/'),/have not received a license or permission from NCSOFT/);assert.doesNotMatch(html('credits/'),/before the publication gate is cleared/);
- assert.match(boss,/AION 2 bosses aren’t one table/);assert.match(boss,/every 3 hours from 01:00/);assert.match(boss,/4-hour cycle/);
+ assert.match(html('credits/'),/Original site artwork/);assert.doesNotMatch(html('credits/'),/publication gate|Publication permission has not been established/);
 });
 test('public release has no robots meta on all nineteen pages and no obsolete i18n dependency',()=>{
  const all=[...routes,'rift-timer/location/','rift-timer/quests/','sources/','credits/','privacy/'];assert.equal(all.length,19);
  for(const route of all){const text=html(route);assert.doesNotMatch(text,/<meta\b[^>]*name=["']robots["']/i,route);assert.doesNotMatch(text,/i18n\.js|>Disputed</,route);}
  assert.equal(fs.existsSync('dist/i18n.js'),false);assert.doesNotMatch(fs.readFileSync('dist/sw.js','utf8'),/i18n\.js/);assert.doesNotMatch(fs.readFileSync('dist/_headers','utf8'),/X-Robots-Tag/);
- const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');assert.equal((sitemap.match(/<lastmod>2026-10-31<\/lastmod>/g)||[]).length,17);
+ const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');const dates=require('../src/data/page-dates.json');const entries=[...sitemap.matchAll(/<loc>https:\/\/aion2-rift-timer.com\/([^<]*)<\/loc><lastmod>([^<]+)<\/lastmod>/g)];assert.equal(entries.length,17);for(const entry of entries)assert.equal(entry[2],dates[entry[1]]);
  assert.match(html(''),/<noscript>[\s\S]*?timetable above remains readable without it/);
+});
+test('service differences and boss types are visible without running JavaScript',()=>{
+ for(const service of['korea','taiwan']){const text=html('rift-timer/'+service+'/');assert.match(text,/every 4 hours.*6 starts per day.*every 3 hours.*8 starts/);assert.match(text,/Group 1/);assert.match(text,/21:45/);assert.match(text,/Shugo service tables/);}
+ const bosses=html('world-boss-timer/');assert.match(bosses,/Fixed-cycle field bosses/);assert.match(bosses,/Weekly siege encounters/);assert.match(bosses,/Channel-dependent spawns/);
+ for(const route of routes){assert.doesNotMatch(html(route),/wallpaperBg|assets\/[^"\s]+\.webp|Art © NC Corporation/);}
+ assert.doesNotMatch(html('credits/'),/fan-site convention|publication gate|Publication permission has not been established/);
+ const sw=fs.readFileSync('dist/sw.js','utf8');assert.match(sw,/rift-gate\.svg/);assert.doesNotMatch(sw,/wallpaper|\.webp/);
 });

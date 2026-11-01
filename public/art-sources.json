@@ -1,51 +1,60 @@
-[
-  {
-    "file": "assets/mainVisual.webp",
-    "url": "https://st.ncjapan.co.jp/ncjapan/ncsoft/aion2/official/contents/phase2_EJiepgDgardbi3sE/images/home/mainVisual.webp",
-    "source": "https://aion2.ncsoft.jp/en/contents",
-    "credit": "AION 2 artwork \u00a9 NC Corporation / NCSOFT",
-    "use": "Local design preview; no publication license asserted"
-  },
-  {
-    "file": "assets/wallpaperBg1.webp",
-    "url": "https://st.ncjapan.co.jp/ncjapan/ncsoft/aion2/official/contents/phase2_EJiepgDgardbi3sE/images/wallpaper/wallpaperBg1.webp",
-    "source": "https://aion2.ncsoft.jp/en/contents",
-    "credit": "AION 2 artwork \u00a9 NC Corporation / NCSOFT",
-    "use": "Local design preview; no publication license asserted"
-  },
-  {
-    "file": "assets/wallpaperBg4.webp",
-    "url": "https://st.ncjapan.co.jp/ncjapan/ncsoft/aion2/official/contents/phase2_EJiepgDgardbi3sE/images/wallpaper/wallpaperBg4.webp",
-    "source": "https://aion2.ncsoft.jp/en/contents",
-    "credit": "AION 2 artwork \u00a9 NC Corporation / NCSOFT",
-    "use": "Local design preview; no publication license asserted"
-  },
-  {
-    "file": "assets/wallpaperBg7.webp",
-    "url": "https://st.ncjapan.co.jp/ncjapan/ncsoft/aion2/official/contents/phase2_EJiepgDgardbi3sE/images/wallpaper/wallpaperBg7.webp",
-    "source": "https://aion2.ncsoft.jp/en/contents",
-    "credit": "AION 2 artwork \u00a9 NC Corporation / NCSOFT",
-    "use": "Local design preview; no publication license asserted"
-  },
-  {
-    "file": "assets/wallpaperBg10.webp",
-    "url": "https://st.ncjapan.co.jp/ncjapan/ncsoft/aion2/official/contents/phase2_EJiepgDgardbi3sE/images/wallpaper/wallpaperBg10.webp",
-    "source": "https://aion2.ncsoft.jp/en/contents",
-    "credit": "AION 2 artwork \u00a9 NC Corporation / NCSOFT",
-    "use": "Local design preview; no publication license asserted"
-  },
-  {
-    "file": "assets/wallpaperBg13.webp",
-    "url": "https://st.ncjapan.co.jp/ncjapan/ncsoft/aion2/official/contents/phase2_EJiepgDgardbi3sE/images/wallpaper/wallpaperBg13.webp",
-    "source": "https://aion2.ncsoft.jp/en/contents",
-    "credit": "AION 2 artwork \u00a9 NC Corporation / NCSOFT",
-    "use": "Local design preview; no publication license asserted"
-  },
-  {
-    "file": "assets/wallpaperBg15.webp",
-    "url": "https://st.ncjapan.co.jp/ncjapan/ncsoft/aion2/official/contents/phase2_EJiepgDgardbi3sE/images/wallpaper/wallpaperBg15.webp",
-    "source": "https://aion2.ncsoft.jp/en/contents",
-    "credit": "AION 2 artwork \u00a9 NC Corporation / NCSOFT",
-    "use": "Local design preview; no publication license asserted"
-  }
-]
+{
+  "version": 2,
+  "updatedAt": "2026-11-01",
+  "artworkCleared": true,
+  "basis": "All publicly deployed scene artwork is original code-authored vector artwork. No NC artwork is included.",
+  "assets": [
+    {
+      "file": "assets/rift-gate.svg",
+      "title": "The Meridian Gate",
+      "kind": "original code-authored SVG",
+      "creator": "Aion 2 Rift Timer project contributors",
+      "license": "CC BY-SA 4.0",
+      "source": "scripts/create-original-art.py",
+      "usesThirdPartyGameArt": false
+    },
+    {
+      "file": "assets/abyss-vault.svg",
+      "title": "The Silent Vault",
+      "kind": "original code-authored SVG",
+      "creator": "Aion 2 Rift Timer project contributors",
+      "license": "CC BY-SA 4.0",
+      "source": "scripts/create-original-art.py",
+      "usesThirdPartyGameArt": false
+    },
+    {
+      "file": "assets/ember-citadel.svg",
+      "title": "The Ember Citadel",
+      "kind": "original code-authored SVG",
+      "creator": "Aion 2 Rift Timer project contributors",
+      "license": "CC BY-SA 4.0",
+      "source": "scripts/create-original-art.py",
+      "usesThirdPartyGameArt": false
+    },
+    {
+      "file": "assets/star-sanctum.svg",
+      "title": "The Star Sanctum",
+      "kind": "original code-authored SVG",
+      "creator": "Aion 2 Rift Timer project contributors",
+      "license": "CC BY-SA 4.0",
+      "source": "scripts/create-original-art.py",
+      "usesThirdPartyGameArt": false
+    },
+    {
+      "file": "assets/dawn-frontier.svg",
+      "title": "The Dawn Frontier",
+      "kind": "original code-authored SVG",
+      "creator": "Aion 2 Rift Timer project contributors",
+      "license": "CC BY-SA 4.0",
+      "source": "scripts/create-original-art.py",
+      "usesThirdPartyGameArt": false
+    },
+    {
+      "file": "assets/social-card.jpg",
+      "kind": "Original geometric sharing card",
+      "source": "scripts/create-icons.py",
+      "license": "CC BY-SA 4.0",
+      "usesThirdPartyGameArt": false
+    }
+  ]
+}

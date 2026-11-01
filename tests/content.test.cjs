@@ -13,3 +13,14 @@ test('source grades do not mark single-source reports as community agreement',()
 test('install manifest points to genuine 192px and 512px PNG icons',()=>{
  const manifest=require('../public/manifest.json');for(const size of[192,512]){const icon=manifest.icons.find(icon=>icon.sizes===size+'x'+size);assert.ok(icon);const bytes=fs.readFileSync('public'+icon.src);assert.equal(bytes.readUInt32BE(16),size);assert.equal(bytes.readUInt32BE(20),size);}
 });
+test('public artwork consists of project-authored assets, not NC publicity images',()=>{
+ const manifest=require('../public/art-sources.json');assert.equal(manifest.artworkCleared,true);assert.equal(manifest.assets.length,6);
+ for(const asset of manifest.assets){assert.equal(asset.usesThirdPartyGameArt,false);assert.equal(asset.license,'CC BY-SA 4.0');assert.ok(fs.existsSync('public/'+asset.file));}
+ assert.equal(fs.readdirSync('public/assets').some(file=>file.endsWith('.webp')||file.startsWith('wallpaper')),false);
+ for(const asset of manifest.assets.filter(asset=>asset.file.endsWith('.svg'))){const svg=fs.readFileSync('public/'+asset.file,'utf8');assert.match(svg,/original abstract vector scene/);assert.doesNotMatch(svg,/<image\b|href=|https?:\/\/[^w]/);}
+ assert.equal(data.publication.artworkCleared,true);
+});
+test('each page owns its modification date independently of schedule review dates and builds',()=>{
+ const dates=require('../src/data/page-dates.json');assert.equal(Object.keys(dates).length,19);assert.equal(dates['privacy/'],'2026-10-31');assert.equal(dates['world-boss-timer/'],'2026-11-01');assert.equal(Object.hasOwn(site,'lastModified'),false);
+ const changed={...dates,'world-boss-timer/':'2026-11-02'};assert.equal(changed[''],'2026-11-01');assert.equal(changed['reset-timer/'],dates['reset-timer/']);
+});

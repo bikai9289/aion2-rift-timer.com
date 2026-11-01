@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "updatedAt": "2026-10-31T00:00:00Z",
+  "updatedAt": "2026-11-01T00:00:00Z",
   "publication": {
     "enabled": false,
-    "artworkCleared": false
+    "artworkCleared": true
   },
   "sources": [
     {
@@ -417,7 +417,7 @@
             "shugo",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -436,7 +436,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "siege-bosses": {
           "zone": "America/New_York",
@@ -456,7 +457,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -475,7 +476,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "nahma": {
           "zone": "America/New_York",
@@ -494,7 +496,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -513,7 +515,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "kaira": {
           "zone": "America/New_York",
@@ -544,7 +547,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "variants": {
@@ -556,7 +559,7 @@
               ]
             }
           },
-          "note": "Global servers: every 3 hours from 01:00 server time (8 spawns a day); Shugo, Wikily and MetaBot agree on the cycle. Korea and Taiwan use a 4-hour cycle. Sources differ only on which clock anchors Global time."
+          "note": "Shugo reports Korea and Taiwan every 4 hours (6 daily starts), versus Global every 3 hours (8 starts). This is a service-specific rule, not a time-zone conversion. Not observed in game by this site."
         }
       }
     },
@@ -854,7 +857,7 @@
             "shugo",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -873,7 +876,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "siege-bosses": {
           "zone": "America/Los_Angeles",
@@ -893,7 +897,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -912,7 +916,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "nahma": {
           "zone": "America/Los_Angeles",
@@ -931,7 +936,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -950,7 +955,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "kaira": {
           "zone": "America/Los_Angeles",
@@ -981,7 +987,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "variants": {
@@ -993,7 +999,7 @@
               ]
             }
           },
-          "note": "Global servers: every 3 hours from 01:00 server time (8 spawns a day); Shugo, Wikily and MetaBot agree on the cycle. Korea and Taiwan use a 4-hour cycle. Sources differ only on which clock anchors Global time."
+          "note": "Shugo reports Korea and Taiwan every 4 hours (6 daily starts), versus Global every 3 hours (8 starts). This is a service-specific rule, not a time-zone conversion. Not observed in game by this site."
         }
       }
     },
@@ -1291,7 +1297,7 @@
             "shugo",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -1310,7 +1316,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "siege-bosses": {
           "zone": "Europe/Berlin",
@@ -1330,7 +1337,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -1349,7 +1356,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "nahma": {
           "zone": "Europe/Berlin",
@@ -1368,7 +1376,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -1387,7 +1395,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "kaira": {
           "zone": "Europe/Berlin",
@@ -1418,7 +1427,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "variants": {
@@ -1430,7 +1439,7 @@
               ]
             }
           },
-          "note": "Global servers: every 3 hours from 01:00 server time (8 spawns a day); Shugo, Wikily and MetaBot agree on the cycle. Korea and Taiwan use a 4-hour cycle. Sources differ only on which clock anchors Global time."
+          "note": "Shugo reports Korea and Taiwan every 4 hours (6 daily starts), versus Global every 3 hours (8 starts). This is a service-specific rule, not a time-zone conversion. Not observed in game by this site."
         }
       }
     },
@@ -1728,7 +1737,7 @@
             "shugo",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -1747,7 +1756,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "siege-bosses": {
           "zone": "America/Sao_Paulo",
@@ -1767,7 +1777,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -1786,7 +1796,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "nahma": {
           "zone": "America/Sao_Paulo",
@@ -1805,7 +1816,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -1824,7 +1835,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "kaira": {
           "zone": "America/Sao_Paulo",
@@ -1855,7 +1867,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "variants": {
@@ -1867,7 +1879,7 @@
               ]
             }
           },
-          "note": "Global servers: every 3 hours from 01:00 server time (8 spawns a day); Shugo, Wikily and MetaBot agree on the cycle. Korea and Taiwan use a 4-hour cycle. Sources differ only on which clock anchors Global time."
+          "note": "Shugo reports Korea and Taiwan every 4 hours (6 daily starts), versus Global every 3 hours (8 starts). This is a service-specific rule, not a time-zone conversion. Not observed in game by this site."
         }
       }
     },
@@ -2165,7 +2177,7 @@
             "shugo",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -2184,7 +2196,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "siege-bosses": {
           "zone": "Asia/Seoul",
@@ -2204,7 +2217,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -2223,7 +2236,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "nahma": {
           "zone": "Asia/Seoul",
@@ -2242,7 +2256,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -2261,7 +2275,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "kaira": {
           "zone": "Asia/Seoul",
@@ -2292,7 +2307,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "variants": {
@@ -2304,7 +2319,7 @@
               ]
             }
           },
-          "note": "Global servers: every 3 hours from 01:00 server time (8 spawns a day); Shugo, Wikily and MetaBot agree on the cycle. Korea and Taiwan use a 4-hour cycle. Sources differ only on which clock anchors Global time."
+          "note": "Shugo reports Korea and Taiwan every 4 hours (6 daily starts), versus Global every 3 hours (8 starts). This is a service-specific rule, not a time-zone conversion. Not observed in game by this site."
         }
       }
     },
@@ -2533,14 +2548,15 @@
           "sourceIds": [
             "shugo"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
             0,
             30,
             60
-          ]
+          ],
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "siege-bosses": {
           "zone": "Asia/Seoul",
@@ -2557,14 +2573,15 @@
           "sourceIds": [
             "shugo"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
             0,
             30,
             60
-          ]
+          ],
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "nahma": {
           "zone": "Asia/Seoul",
@@ -2581,14 +2598,15 @@
           "sourceIds": [
             "shugo"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
             0,
             30,
             60
-          ]
+          ],
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "kaira": {
           "zone": "Asia/Seoul",
@@ -2615,10 +2633,10 @@
           "sourceIds": [
             "shugo"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
-          "note": "Korea and Taiwan: every 4 hours from 00:00 service time (6 spawns a day). Global servers use a different 3-hour cycle."
+          "note": "Shugo reports Korea and Taiwan every 4 hours (6 daily starts), versus Global every 3 hours (8 starts). This is a service-specific rule, not a time-zone conversion. Not observed in game by this site."
         },
         "outland": {
           "zone": "Asia/Seoul",
@@ -2872,12 +2890,13 @@
           "sourceIds": [
             "shugo"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
             0
-          ]
+          ],
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "siege-bosses": {
           "zone": "Asia/Taipei",
@@ -2894,12 +2913,13 @@
           "sourceIds": [
             "shugo"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
             0
-          ]
+          ],
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "nahma": {
           "zone": "Asia/Taipei",
@@ -2916,12 +2936,13 @@
           "sourceIds": [
             "shugo"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
             0
-          ]
+          ],
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "kaira": {
           "zone": "Asia/Taipei",
@@ -2948,10 +2969,10 @@
           "sourceIds": [
             "shugo"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
-          "note": "Korea and Taiwan: every 4 hours from 00:00 service time (6 spawns a day). Global servers use a different 3-hour cycle."
+          "note": "Shugo reports Korea and Taiwan every 4 hours (6 daily starts), versus Global every 3 hours (8 starts). This is a service-specific rule, not a time-zone conversion. Not observed in game by this site."
         },
         "domination": {
           "zone": "Asia/Taipei",
@@ -3271,7 +3292,7 @@
             "shugo",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -3290,7 +3311,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "siege-bosses": {
           "zone": "America/New_York",
@@ -3310,7 +3332,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -3329,7 +3351,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "nahma": {
           "zone": "America/New_York",
@@ -3348,7 +3371,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "groupOffsets": [
@@ -3367,7 +3390,8 @@
                 0
               ]
             }
-          }
+          },
+          "note": "Shugo publishes separate service-local weekdays, start times and matching-group offsets. Korea/Taiwan rules are not converted copies of the Global schedule. Community reference; check in-game notices."
         },
         "kaira": {
           "zone": "America/New_York",
@@ -3398,7 +3422,7 @@
             "wikily",
             "metabot"
           ],
-          "checkedAt": "2026-10-31T00:00:00Z",
+          "checkedAt": "2026-11-01T00:00:00Z",
           "validUntil": null,
           "fold": "first",
           "variants": {
@@ -3410,7 +3434,7 @@
               ]
             }
           },
-          "note": "Global servers: every 3 hours from 01:00 server time (8 spawns a day); Shugo, Wikily and MetaBot agree on the cycle. Korea and Taiwan use a 4-hour cycle. Sources differ only on which clock anchors Global time."
+          "note": "Shugo reports Korea and Taiwan every 4 hours (6 daily starts), versus Global every 3 hours (8 starts). This is a service-specific rule, not a time-zone conversion. Not observed in game by this site."
         }
       },
       "aliasOf": "na-east"

@@ -9,6 +9,11 @@ schedule configuration, validation, reminders, calendar exports and build toolin
 
 License text: <https://creativecommons.org/licenses/by-sa/4.0/legalcode.en>
 
-Third-party Aion 2 artwork is © NC Corporation / NCSOFT and is **not** covered by
-the code license. Its source manifest is in public/art-sources.json. No public
-redistribution or commercial-use permission for that artwork is asserted.
+The currently deployed scene artwork, sharing card and icons are original,
+code-authored project assets and use the same CC BY-SA 4.0 notice. Their source
+files and provenance are listed in public/art-sources.json. Previously used NC
+promotional artwork has been removed from public/ and is not part of the deployed
+site. Historical design references are not deployed and are not relicensed here.
+
+Aion 2 and related game names belong to their respective owners. This independent
+fan tool is not affiliated with or endorsed by NCSOFT.

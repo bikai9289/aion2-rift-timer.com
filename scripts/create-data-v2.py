@@ -54,7 +54,7 @@ for key,name,zone in [('na-east','NA East','America/New_York'),('na-west','NA We
   event['artifact']=rule(zone,[21],minute=20 if key=='korea' else 30,days=[3,6],duration=30,groupOffsets=offsets)
   event['siege-bosses']=rule(zone,[21],minute=45,days=[3,6],duration=30,groupOffsets=offsets)
   event['nahma']=rule(zone,[22],days=[5,0],duration=30,groupOffsets=offsets)
- event['kaira']=rule(zone,list(range(1,24,3)) if global_service else list(range(0,24,4)),duration=30,confidence='disputed' if global_service else 'community-agreed',sourceIds=['shugo','wikily'] if global_service else ['shugo'])
+ event['kaira']=rule(zone,list(range(1,24,3)) if global_service else list(range(0,24,4)),duration=30,confidence='disputed' if global_service else 'community-agreed',sourceIds=['shugo','wikily','metabot'] if global_service else ['shugo'])
  if key=='korea':
   event['outland']=rule(zone,[11,20],duration=150,confidence='disputed',note='Shugo gives 150 min but describes separate 30-minute matches and a longer evening range. Window is an estimate, not an exact matchmaking feed.')
   event['argo']=rule(zone,[9,21],duration=30,note='Shugo reports the 28 October addition. Wednesday maintenance can cancel a spawn; check in game.')
@@ -70,7 +70,11 @@ for key,name,zone in [('na-east','NA East','America/New_York'),('na-west','NA We
   if r and r['confidence']=='community-agreed' and len(r['sourceIds'])==1:r['confidence']='community-reported'
  regions[key]=dict(name=name,zone=zone,service='global' if global_service else key,events=event)
 regions['global']=deepcopy(regions['na-east']);regions['global']['name']='Global · NA East reference';regions['global']['aliasOf']='na-east'
-data=dict(version=2,updatedAt=checked,publication=dict(enabled=False,artworkCleared=False),sources=sources,events=events,regions=regions)
+for reg in regions.values():
+ for eid in ['kaira','artifact','siege-bosses','nahma']:
+  reg['events'][eid]['checkedAt']='2026-11-01T00:00:00Z'
+  reg['events'][eid]['note']='Service-specific community schedule; KR/TW Kaira uses a four-hour cycle, Global three hours. Weekdays and matching groups also differ by service. See Shugo service tables.'
+data=dict(version=2,updatedAt='2026-11-01T00:00:00Z',publication=dict(enabled=False,artworkCleared=True),sources=sources,events=events,regions=regions)
 (root/'src/data/schedules.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 # Site origin/language/indexing are operator-maintained; never overwrite them here.
 print('Wrote v2 service-local rules, source interpretations and 13 event categories.')

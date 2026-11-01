@@ -65,14 +65,14 @@ npm start        # 预览已生成的 dist/
 
 在 `src/data/site.json` 配置，或在托管平台设置 `SITE_URL` 覆盖它。所有 canonical / sitemap / 分享 URL 使用同一 origin。不要把尚未绑定的域名提前写成正式站址。
 
-当前 sitemap 聚焦 17 个英文内容页，不列繁中/韩文及 credits/privacy；非英文路由暂不生成，语言入口、hreflang 和非英文预缓存均停用；翻译源文件保留。按站主 2026-10-31 的发布指令，`site.indexing=true`；19 页不输出 robots meta，也无 noindex 响应头。图片授权状态独立保留，不冒充已获授权。sitemap lastmod 使用 `site.lastModified`，当前为 2026-10-31。
+当前 sitemap 聚焦 17 个英文内容页，不列繁中/韩文及 credits/privacy；非英文路由暂不生成，语言入口、hreflang 和非英文预缓存均停用；翻译源文件保留。`site.indexing=true`；19 页不输出 robots meta，也无 noindex 响应头。当前配图均已替换为项目原创矢量场景与分享图。sitemap lastmod 按 `src/data/page-dates.json` 的路由日期读取，构建不会自动刷新。
 
 所有工具页在 HTML 中直接输出对应服务的已公佈时刻表，关闭 JavaScript 仍能读到数字和活动入口。脚本成功启动后再接管未来场次及实时倒计时。共享工具目录使用原生链接，不依赖按钮事件。
 
 正式域名绑定、时间资料与图片使用条件确认后：
 
 1. 将 `SITE_URL` 改为 `https://aion2-rift-timer.com`。
-2. 确认图片公开使用权或换成有权使用的图片，设置 `publication.artworkCleared=true`。
+2. 当前公开配图为原创，`publication.artworkCleared=true`；未来加入第三方素材时必须重新核对，不能把该值视作第三方授权证明。
 3. 索引开关使用 `site.indexing`，重新构建。`artworkCleared` 仅能据真实授权情况修改，不与索引开关混用。
 4. 提交新域名的 sitemap，并将临时 origin 重定向到正式域名。
 
@@ -103,6 +103,8 @@ npm run test:browser
 
 原作：[TimeLord by dburr](https://github.com/dburr/TimeLord)，CC BY-SA 4.0；保留原 README 于 `docs/UPSTREAM-README.md`，旧代码于 `docs/legacy/`。参见 [LICENSE.md](LICENSE.md)。
 
-第三方 Aion 2 宣传图 © NC Corporation / NCSOFT，不受代码许可证授权；来源在 `public/art-sources.json`。公开发布权限尚未确认，未据此自动放开收录。工具独立于 NCSOFT。
+当前公开配图为项目原创代码矢量图、图标和分享卡片，CC BY-SA 4.0；素材出处在 `public/art-sources.json`，生成器为 `scripts/create-original-art.py` 与 `scripts/create-icons.py`。旧 NC 宣传图已从公开目录移除，历史设计稿不部署。Aion 2 名称属于相应权利人，工具独立于 NCSOFT。
 
 当前英文构建不再输出或加载 i18n.js。主界面、来源表及日历中有分歧的等级统一显示 Source disagreement，内部 confidence=disputed 不变。noscript 明确说明静态时刻表无需 JS，实时倒数/换算/提醒需要 JS。
+
+2026-11-01 更新详见 [发布记录](docs/2026-11-01-release.md)：服务差异说明、首领分类、原创配图和按页 lastmod。每次实际改动主内容、图片或链接时，仅更新受影响路由的 page-dates 日期；不要用构建当天替代内容修改日。

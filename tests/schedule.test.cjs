@@ -12,7 +12,7 @@ test('v2 validates each event independently, including all referenced sources',(
  [d=>d.regions.korea.events.rift.groupOffsets=[0,-1],'CONFIG_GROUP'],
  [d=>d.regions.korea.events.rift.variants={bad:{zone:'bad'}},'CONFIG_TIMEZONE'],
  [d=>d.sources[0].url='javascript:alert(1)','CONFIG_SOURCE_URL'],
- [d=>d.publication.enabled=true,'PUBLICATION_NOT_READY']
+ [d=>{d.publication.enabled=true;d.publication.artworkCleared=false;},'PUBLICATION_NOT_READY']
  ]){const copy=structuredClone(data);change(copy);assert.throws(()=>core.validate(copy),e=>e.code===code);}});
 test('KR/TW service-local 02/05/... hours; old UTC anchors differ only by whole cycles',()=>{
  for(const[id,start,anchor]of[['korea','2026-10-30T15:00:00Z',2*3600000],['taiwan','2026-10-30T16:00:00Z',0]]){

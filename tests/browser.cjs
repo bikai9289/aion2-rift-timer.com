@@ -31,7 +31,7 @@ const base=process.env.TEST_URL||'http://127.0.0.1:4320/',config=require('../src
  await page.locator('#schedule-profile').selectOption('regional');
  await page.locator('#expand-schedule').click();assert.equal(await page.locator('.opening').count(),8);
  await page.locator('[data-zone="utc"]').click();assert.match(await page.locator('#schedule-note').textContent(),/UTC/);
- await page.locator('[data-scene="fire"]').click();assert.match(await page.locator('#hero-scene').getAttribute('src'),/Bg4/);await page.locator('[data-scene="rift"]').click();
+ await page.locator('[data-scene="fire"]').click();assert.match(await page.locator('#hero-scene').getAttribute('src'),/ember-citadel/);await page.locator('[data-scene="rift"]').click();
  await page.locator('#alert-open').click();await page.locator('#lead').selectOption('15');await page.locator('#enable-alerts').click();assert.match(await page.locator('#alert-status').textContent(),/denied/);await page.locator('#enable-alerts').click();await page.keyboard.press('Escape');
  const waiting=page.waitForEvent('download');await page.locator('#calendar').click();const download=await waiting,ics=fs.readFileSync(await download.path(),'utf8');
  assert.equal((ics.match(/BEGIN:VEVENT/g)||[]).length,56);assert.equal((ics.match(/TRIGGER:-PT15M/g)||[]).length,56);assert.match(ics,/Source disagreement/);assert.doesNotMatch(ics,/DEMO/);for(const line of ics.split('\r\n'))assert.ok(Buffer.byteLength(line,'utf8')<=75,'ICS line too long');
