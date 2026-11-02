@@ -57,7 +57,6 @@ engine = engine[:start] + '''function tick() {
     el('weekly-date').textContent = weekly ? clock(weekly) + ' · ' + day(weekly) + ' · ' + displayZone() : 'Beyond the reviewed schedule period';
     if (weekly && (checks.dailyBoundary !== resetAfter(now).toISOString() || checks.weeklyBoundary !== weekly.toISOString())) loadChecks(now);
   }
-  document.title = [el('hours').textContent, el('minutes').textContent, el('seconds').textContent].join(':') + ' · ' + label + ' Aion 2 ' + (mode === 'reset' ? 'Reset' : 'Rift');
   if (activeAlerts) {
     const key = region + +dates[0];
     if (+dates[0] - now <= Number(el('lead').value) * 60000 && notified !== key) {

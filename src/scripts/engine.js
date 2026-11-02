@@ -93,7 +93,6 @@ function tick(){
  renderPhases(state,rule);renderBoard(now);
  if(mode==='reset'){const daily=resetAfter(now),weekly=resetAfter(now,true);for(const[id,date]of[['daily',daily],['weekly',weekly]]){el(id+'-clock').textContent=date?(id==='daily'?clock(date)+' '+zoneShort(date):remaining(date,now)):t('Not scheduled for this service');el(id+'-date').textContent=date?day(date)+' · '+clock(date)+' · '+displayZone():'';}if(daily&&weekly&&(checks.dailyBoundary!==daily.toISOString()||checks.weeklyBoundary!==weekly.toISOString()))loadChecks(now);}
  if(el('berlin-time')){el('berlin-time').textContent=state.next?clock(state.next,'Europe/Berlin'):'—';el('london-time').textContent=state.next?clock(state.next,'Europe/London'):'—';}
- document.title=[el('hours').textContent,el('minutes').textContent,el('seconds').textContent].join(':')+' · '+eventName(pageEvent);
  if(activeAlerts&&state.next){const key=pageEvent+region+profile+group+ +state.next;if(+state.next-now<=Number(el('lead').value)*60000&&notified!==key){notified=key;const body=eventName(pageEvent)+' · '+clock(state.next,deviceZone)+' ('+deviceZone+') · '+confidenceName(rule.confidence);toast(body);try{if('Notification'in window&&Notification.permission==='granted'){const n=new Notification(eventName(pageEvent),{body,tag:key});setTimeout(()=>n.close(),12000);}}catch{el('alert-status').textContent=t('Desktop alerts unavailable. In-page alerts remain active.');}if(el('sound').checked)playSound().catch(()=>el('alert-status').textContent=t('Use Test to enable sound.'));}}
 }
 function syncControls(){

@@ -25,7 +25,7 @@ const controls=`<div class="schedule-options"><label for="schedule-profile">Cloc
 const board=`<section class="world-clock-section SHELL"><span class="section-index">WORLD EVENT TIMERS</span><h2>World event clocks</h2><p class="micro">Clock sources disagree. Compare interpretations above.</p><div class="event-board" id="event-board"></div></section>`;
 const readPage=file=>fs.readFileSync(path.join(root,'src/pages',file),'utf8');
 const pages=new Map([
- ['',{html:readPage('index.html'),defaultRegion:'na-east',useStoredRegion:true,eventId:'rift',title:'Aion 2 Rift Timer — Spacetime Rift Countdown',description:'Service-local Aion 2 rift countdown, phase windows, source comparison and world event schedules.'}],
+ ['',{html:readPage('index.html'),defaultRegion:'na-east',useStoredRegion:true,eventId:'rift',title:'Aion 2 Rift Timer — Live Spacetime Rift Countdown & Event Schedule',description:'Service-local Aion 2 rift countdown, phase windows, source comparison and world event schedules.'}],
  ['rift-timer/europe/',{html:readPage('rift-timer/europe/index.html'),defaultRegion:'europe',eventId:'rift',title:'Aion 2 Rift Timer EU — Europe Schedule',description:'Compare Europe service-local and fixed-clock interpretations with automatic DST conversion.'}],
  ['rift-timer/asia/',{html:readPage('rift-timer/asia/index.html'),defaultRegion:'asia',eventId:'rift',title:'Aion 2 Rift Timer Asia — Service Schedule',description:'Global Asia, Korea and Taiwan use separately sourced schedule configurations.'}],
  ['reset-timer/',{html:readPage('reset-timer/index.html'),defaultRegion:'na-east',useStoredRegion:true,eventId:'daily-reset',title:'Aion 2 Daily & Weekly Reset Timer',description:'Community-agreed daily and weekly reset schedules, local-time conversion and personal checklist.'}]
@@ -72,7 +72,7 @@ for(const lang of site.languages)for(const[route,p]of pages){
  const defaultRegion=p.defaultRegion||'na-east',defaultRule=data.regions[defaultRegion].events[p.eventId||'rift'];
  html=html.replace('<div data-tool-directory></div>',toolDirectory(route));
  if(['rift-timer/korea/','rift-timer/taiwan/'].includes(route))html=html.replace('</main>',`<div class="container">${serviceDifferences(data,defaultRegion)}</div></main>`);
- if(route==='world-boss-timer/')html=html.replace('</main>',bossGuide()+`<div class="container">${serviceDifferences(data,'korea')}${serviceDifferences(data,'taiwan')}</div></main>`);
+ if(route==='world-boss-timer/')html=html.replace('</main>',bossGuide()+`<div class="container">${serviceDifferences(data,['korea','taiwan'])}</div></main>`);
  if(route==='')html=html.replace('</main>',riftPrimer()+'</main>');
  const tr=value=>locales[lang]?.[value]||value;
  const routeEvent=Object.values(data.events).find(event=>event.route===route);
