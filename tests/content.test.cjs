@@ -21,6 +21,6 @@ test('public artwork consists of project-authored assets, not NC publicity image
  assert.equal(data.publication.artworkCleared,true);
 });
 test('each page owns its modification date independently of schedule review dates and builds',()=>{
- const dates=require('../src/data/page-dates.json');assert.equal(Object.keys(dates).length,19);assert.equal(dates['privacy/'],'2026-10-31');assert.equal(dates['world-boss-timer/'],'2026-11-01');assert.equal(Object.hasOwn(site,'lastModified'),false);
- const changed={...dates,'world-boss-timer/':'2026-11-02'};assert.equal(changed[''],'2026-11-01');assert.equal(changed['reset-timer/'],dates['reset-timer/']);
+ const dates=require('../src/data/page-dates.json');assert.equal(Object.keys(dates).length,19);assert.equal(dates['privacy/'],'2026-10-31');assert.equal(dates[''],'2026-11-02');assert.equal(dates['world-boss-timer/'],'2026-11-02');assert.equal(dates['reset-timer/'],'2026-10-31');assert.equal(Object.hasOwn(site,'lastModified'),false);
+ const changed={...dates,'world-boss-timer/':'2026-11-03'};assert.equal(changed[''],'2026-11-02');assert.equal(changed['reset-timer/'],dates['reset-timer/']);
 });
