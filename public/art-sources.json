@@ -1,60 +1,24 @@
 {
-  "version": 2,
-  "updatedAt": "2026-11-01",
-  "artworkCleared": true,
-  "basis": "All publicly deployed scene artwork is original code-authored vector artwork. No NC artwork is included.",
+  "version": 3,
+  "updatedAt": "2026-11-22",
+  "basis": "Official AION 2 promotional visuals and wallpapers published by NC Corporation / NCSOFT, displayed on an independent fan companion with attribution.",
   "assets": [
-    {
-      "file": "assets/rift-gate.svg",
-      "title": "The Meridian Gate",
-      "kind": "original code-authored SVG",
-      "creator": "Aion 2 Rift Timer project contributors",
-      "license": "CC BY-SA 4.0",
-      "source": "scripts/create-original-art.py",
-      "usesThirdPartyGameArt": false
-    },
-    {
-      "file": "assets/abyss-vault.svg",
-      "title": "The Silent Vault",
-      "kind": "original code-authored SVG",
-      "creator": "Aion 2 Rift Timer project contributors",
-      "license": "CC BY-SA 4.0",
-      "source": "scripts/create-original-art.py",
-      "usesThirdPartyGameArt": false
-    },
-    {
-      "file": "assets/ember-citadel.svg",
-      "title": "The Ember Citadel",
-      "kind": "original code-authored SVG",
-      "creator": "Aion 2 Rift Timer project contributors",
-      "license": "CC BY-SA 4.0",
-      "source": "scripts/create-original-art.py",
-      "usesThirdPartyGameArt": false
-    },
-    {
-      "file": "assets/star-sanctum.svg",
-      "title": "The Star Sanctum",
-      "kind": "original code-authored SVG",
-      "creator": "Aion 2 Rift Timer project contributors",
-      "license": "CC BY-SA 4.0",
-      "source": "scripts/create-original-art.py",
-      "usesThirdPartyGameArt": false
-    },
-    {
-      "file": "assets/dawn-frontier.svg",
-      "title": "The Dawn Frontier",
-      "kind": "original code-authored SVG",
-      "creator": "Aion 2 Rift Timer project contributors",
-      "license": "CC BY-SA 4.0",
-      "source": "scripts/create-original-art.py",
-      "usesThirdPartyGameArt": false
-    },
-    {
-      "file": "assets/social-card.jpg",
-      "kind": "Original geometric sharing card",
-      "source": "scripts/create-icons.py",
-      "license": "CC BY-SA 4.0",
-      "usesThirdPartyGameArt": false
-    }
+    { "file": "assets/mainVisual.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg1.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg2.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg3.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg4.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg5.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg6.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg7.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg8.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg9.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg10.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg11.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg12.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg13.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg14.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/wallpaperBg15.webp", "source": "https://aion2.ncsoft.jp/en/contents", "credit": "AION 2 artwork © NC Corporation / NCSOFT" },
+    { "file": "assets/social-card.jpg", "source": "scripts/create-icons.py", "credit": "Aion 2 Rift Timer sharing card" }
   ]
 }

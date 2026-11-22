@@ -1,8 +1,10 @@
 'use strict';
 const cinemaScenes = {
-  rift: { file: 'assets/rift-gate.svg', alt: 'Original vector scene of a luminous crystalline portal', label: 'ATREIA / THE OTHER SIDE' },
-  abyss: { file: 'assets/abyss-vault.svg', alt: 'Original vector scene of a silent blue portal vault', label: 'ATREIA / INTO THE ABYSS' },
-  fire: { file: 'assets/ember-citadel.svg', alt: 'Original vector scene of an ember citadel', label: 'ATREIA / FIRE & FURY' }
+  main: { file: 'assets/mainVisual.webp', alt: 'Official AION 2 main visual artwork', label: 'ATREIA / MAIN VISUAL' },
+  rift: { file: 'assets/wallpaperBg13.webp', alt: 'Official AION 2 Spacetime Rift scene', label: 'ATREIA / SPACETIME RIFT' },
+  abyss: { file: 'assets/wallpaperBg15.webp', alt: 'Official AION 2 Abyss scene', label: 'ATREIA / INTO THE ABYSS' },
+  fire: { file: 'assets/wallpaperBg4.webp', alt: 'Official AION 2 World Boss battle scene', label: 'ATREIA / WORLD BOSS' },
+  sky: { file: 'assets/wallpaperBg14.webp', alt: 'Official AION 2 sky horizon scene', label: 'ATREIA / SKY HORIZON' }
 };
 document.querySelectorAll('[data-scene]').forEach(button => button.addEventListener('click', () => {
   const scene = cinemaScenes[button.dataset.scene];

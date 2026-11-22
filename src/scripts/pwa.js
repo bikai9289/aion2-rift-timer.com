@@ -8,7 +8,7 @@
  let installEvent=null;
  const button=document.getElementById('install-app');
  addEventListener('beforeinstallprompt',event=>{event.preventDefault();installEvent=event;if(button)button.hidden=false;});
- if(button)button.addEventListener('click',async()=>{if(installEvent){await installEvent.prompt();await installEvent.userChoice;installEvent=null;button.hidden=true;}else{const instructions=document.getElementById('install-help');if(instructions)instructions.hidden=!instructions.hidden;}});
+ if(button)button.addEventListener('click',async()=>{if(installEvent){await installEvent.prompt();await installEvent.userChoice;installEvent=null;button.hidden=true;}else{const instructions=document.getElementById('install-help');if(instructions){instructions.hidden=!instructions.hidden;if(!instructions.hidden)instructions.scrollIntoView({behavior:'smooth',block:'nearest'});}}});
  if('serviceWorker'in navigator&&isSecureContext){
   navigator.serviceWorker.register(new URL('sw.js',root),{scope:root.pathname}).then(registration=>{
    const update=document.getElementById('update-app');

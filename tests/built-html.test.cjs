@@ -22,7 +22,7 @@ test('retired language routes have no links, alternates or offline precache; Kor
  assert.match(html('rift-timer/taiwan/'),/Cycle · Official \/ Entry window · Official/);
  const boss=html('world-boss-timer/');for(const name of['Executor Tamasa','Executor Argo','Executor Kaira'])assert.match(boss,new RegExp('<td>'+name+'</td>'));
  assert.match(html('abyss-outland/'),/≈ 150 min window · ≈ 30 min per match/);
- assert.match(html('credits/'),/Original site artwork/);assert.doesNotMatch(html('credits/'),/publication gate|Publication permission has not been established/);
+ assert.match(html('credits/'),/Official AION 2 artwork/);assert.doesNotMatch(html('credits/'),/publication gate|Publication permission has not been established/);
 });
 test('public release has no robots meta on all nineteen pages and no obsolete i18n dependency',()=>{
  const all=[...routes,'rift-timer/location/','rift-timer/quests/','sources/','credits/','privacy/'];assert.equal(all.length,19);
@@ -34,7 +34,7 @@ test('public release has no robots meta on all nineteen pages and no obsolete i1
 test('service differences and boss types are visible without running JavaScript',()=>{
  for(const service of['korea','taiwan']){const text=html('rift-timer/'+service+'/');assert.match(text,/every 4 hours.*6 starts per day.*every 3 hours.*8 starts/);assert.match(text,/Group 1/);assert.match(text,/21:45/);assert.match(text,/Shugo service tables/);}
  const bosses=html('world-boss-timer/');assert.match(bosses,/Fixed-cycle field bosses/);assert.match(bosses,/Weekly siege encounters/);assert.match(bosses,/Channel-dependent spawns/);
- for(const route of routes){assert.doesNotMatch(html(route),/wallpaperBg|assets\/[^"\s]+\.webp|Art © NC Corporation/);}
+ for(const route of routes){assert.match(html(route),/assets\/(?:mainVisual|wallpaperBg\d+)\.webp/);}
  assert.doesNotMatch(html('credits/'),/fan-site convention|publication gate|Publication permission has not been established/);
- const sw=fs.readFileSync('dist/sw.js','utf8');assert.match(sw,/rift-gate\.svg/);assert.doesNotMatch(sw,/wallpaper|\.webp/);
+ const sw=fs.readFileSync('dist/sw.js','utf8');assert.match(sw,/mainVisual\.webp/);
 });

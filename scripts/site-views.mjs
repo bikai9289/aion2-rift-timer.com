@@ -41,7 +41,13 @@ export const primerCards=[
 ];
 export function riftPrimer(){
  const card=(item,index)=>`<article><span class="section-index">0${index+1}</span><h3>${item.heading}</h3><p>${item.text}</p><a class="text-button" href="${item.link}">${item.anchor} ↗</a></article>`;
- return `<section class="rift-primer shell"><div class="section-heading"><div><span class="section-index">UNDERSTAND THE CROSSING</span><h2>How the Aion 2 Rift Timer works</h2></div></div><div class="primer-grid">${primerCards.slice(0,2).map(card).join('')}<figure><img src="/assets/abyss-vault.svg" alt="Original abstract portal vault" loading="lazy"><figcaption>Original illustration · not a portal map · CC BY-SA 4.0</figcaption></figure>${primerCards.slice(2).map((item,index)=>card(item,index+2)).join('')}</div></section>`;
+ const gallery=[
+  ['wallpaperBg8.webp','Official AION 2 Atreia wilderness artwork','Atreia Wilderness'],
+  ['wallpaperBg9.webp','Official AION 2 stronghold artwork','Citadel & Siege Grounds'],
+  ['wallpaperBg11.webp','Official AION 2 winged warriors artwork','Elyos & Asmodian Skies'],
+  ['wallpaperBg12.webp','Official AION 2 ancient ruins artwork','Ancient Ruins & Bosses']
+ ].map(([file,alt,label])=>`<figure class="gallery-tile"><img src="/assets/${file}" alt="${alt}" loading="lazy"><figcaption>${label} · © NCSOFT</figcaption></figure>`).join('');
+ return `<section class="rift-primer shell"><div class="section-heading"><div><span class="section-index">UNDERSTAND THE CROSSING</span><h2>How the Aion 2 Rift Timer works</h2></div></div><div class="primer-grid">${primerCards.slice(0,2).map(card).join('')}<figure><img src="/assets/wallpaperBg15.webp" alt="Official AION 2 Abyss portal artwork" loading="lazy"><figcaption>Official AION 2 artwork · © NC Corporation / NCSOFT</figcaption></figure>${primerCards.slice(2).map((item,index)=>card(item,index+2)).join('')}</div><div class="official-gallery-wrap"><div class="section-heading"><div><span class="section-index">ATREIA VISUAL GALLERY</span><h2>Official AION 2 world scenes</h2></div></div><div class="official-gallery">${gallery}</div></div></section>`;
 }
 export function serviceDifferences(data,service='korea'){
  const services=Array.isArray(service)?service:[service],global=data.regions['na-east'],esc=escapeHTML;
