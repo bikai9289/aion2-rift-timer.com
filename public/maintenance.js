@@ -16,7 +16,7 @@
   count.textContent=['completed','cancelled'].includes(phase)?'Status comes from the linked official notice, not a live server probe.':phase==='unconfirmed'?'Expected end passed. Recovery is not confirmed.':(phase==='scheduled'?'Starts in ':'Expected end in ')+Math.floor((target-now)/3600000)+'h '+Math.floor((target-now)%3600000/60000)+'m';
  }
  const local=document.getElementById('maintenance-local');
- const format=new Intl.DateTimeFormat(undefined,{dateStyle:'medium',timeStyle:'short'});
+ const format=new Intl.DateTimeFormat('en-US',{dateStyle:'medium',timeStyle:'short'});
  local.textContent=format.format(new Date(panel.dataset.start))+' - '+format.format(new Date(panel.dataset.end))+' ('+format.resolvedOptions().timeZone+')';
  update();setInterval(update,30000);
  document.addEventListener('visibilitychange',update);
