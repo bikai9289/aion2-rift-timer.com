@@ -12,7 +12,7 @@ test('service-exclusive routes default to supported services with no EU identity
 });
 test('visible H1 matches the tool, sitemap is focused and homepage does not have one-item breadcrumbs',()=>{
  for(const[route,phrase]of[['','Aion 2'],['reset-timer/','Reset Timer'],['rift-timer/europe/','Europe'],['rift-timer/korea/','Korea'],['rift-timer/taiwan/','Taiwan']]){const h1=html(route).match(/<h1>([\s\S]*?)<\/h1>/)[1];assert.ok(h1.includes(phrase));assert.doesNotMatch(h1,/sr-only/);}
- const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');assert.doesNotMatch(sitemap,/\/zh-Hant\/|\/ko\/|\/credits\/|\/privacy\//);assert.equal((sitemap.match(/<url>/g)||[]).length,17);assert.doesNotMatch(html(''),/'@type':'BreadcrumbList'|"@type":"BreadcrumbList"/);assert.doesNotMatch(html('rift-timer/korea/'),/hreflang|language-links/);
+ const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');assert.doesNotMatch(sitemap,/\/zh-Hant\/|\/ko\/|\/credits\/|\/privacy\//);assert.equal((sitemap.match(/<url>/g)||[]).length,18);assert.doesNotMatch(html(''),/'@type':'BreadcrumbList'|"@type":"BreadcrumbList"/);assert.doesNotMatch(html('rift-timer/korea/'),/hreflang|language-links/);
 });
 test('retired language routes have no links, alternates or offline precache; Korean/Taiwan copy is specific',()=>{
  for(const route of routes)assert.doesNotMatch(html(route),/hreflang|language-links|href="\/(?:ko|zh-Hant)\//);
@@ -28,7 +28,7 @@ test('public release has no robots meta on all nineteen pages and no obsolete i1
  const all=[...routes,'rift-timer/location/','rift-timer/quests/','sources/','credits/','privacy/'];assert.equal(all.length,19);
  for(const route of all){const text=html(route);assert.doesNotMatch(text,/<meta\b[^>]*name=["']robots["']/i,route);assert.doesNotMatch(text,/i18n\.js|>Disputed</,route);}
  assert.equal(fs.existsSync('dist/i18n.js'),false);assert.doesNotMatch(fs.readFileSync('dist/sw.js','utf8'),/i18n\.js/);assert.doesNotMatch(fs.readFileSync('dist/_headers','utf8'),/X-Robots-Tag/);
- const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');const dates=require('../src/data/page-dates.json');const entries=[...sitemap.matchAll(/<loc>https:\/\/aion2-rift-timer.com\/([^<]*)<\/loc><lastmod>([^<]+)<\/lastmod>/g)];assert.equal(entries.length,17);for(const entry of entries)assert.equal(entry[2],dates[entry[1]]);
+ const sitemap=fs.readFileSync('dist/sitemap.xml','utf8');const dates=require('../src/data/page-dates.json');const entries=[...sitemap.matchAll(/<loc>https:\/\/aion2-rift-timer.com\/([^<]*)<\/loc><lastmod>([^<]+)<\/lastmod>/g)];assert.equal(entries.length,18);for(const entry of entries)assert.equal(entry[2],dates[entry[1]]);
  assert.match(html(''),/<noscript>[\s\S]*?timetable above remains readable without it/);
 });
 test('service differences and boss types are visible without running JavaScript',()=>{
