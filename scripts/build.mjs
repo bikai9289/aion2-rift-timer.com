@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
 import {createHash} from 'node:crypto';
-import {toolDirectory,publishedSchedule,staticBoard,riftPrimer,clockHours,serviceDifferences,bossGuide} from './site-views.mjs';
+import {toolDirectory,publishedSchedule,staticBoard,riftPrimer,clockHours,serviceDifferences,bossGuide,regionGuide} from './site-views.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),require=createRequire(import.meta.url);
 const {validate}=require('../src/scripts/schedule-core.js');
 const load=name=>JSON.parse(fs.readFileSync(path.join(root,'src/data',name+'.json'),'utf8'));
@@ -74,6 +74,7 @@ for(const lang of site.languages)for(const[route,p]of pages){
  const defaultRegion=p.defaultRegion||'na-east',defaultRule=data.regions[defaultRegion].events[p.eventId||'rift'];
  html=html.replace('<div data-tool-directory></div>',toolDirectory(route));
  if(['rift-timer/korea/','rift-timer/taiwan/'].includes(route))html=html.replace('</main>',`<div class="container">${serviceDifferences(data,defaultRegion)}</div></main>`);
+ if(['rift-timer/europe/','rift-timer/asia/'].includes(route))html=html.replace('</main>',`<div class="container">${regionGuide(defaultRegion)}</div></main>`);
  if(route==='world-boss-timer/')html=html.replace('</main>',bossGuide()+`<div class="container">${serviceDifferences(data,['korea','taiwan'])}</div></main>`);
  if(route==='')html=html.replace('</main>',riftPrimer()+'</main>');
  const tr=value=>locales[lang]?.[value]||value;
@@ -86,7 +87,7 @@ for(const lang of site.languages)for(const[route,p]of pages){
  html=html.replace(/<html lang="[^"]+"/,`<html lang="${lang}"`);
  html=html.replace(/<title>[\s\S]*?<\/title>/,`<title>${esc(title)}</title>`).replace(/<meta name="description"[^>]*>/g,'');
  html=html.replace(/<link rel="stylesheet" href="[^\"]*(cinematic|utility)\.css">/g,(_,name)=>`<link rel="stylesheet" href="/${name}.css">`);
- html=html.replace(/src="(?:\.\.\/)*assets\//g,'src="/assets/');
+ html=html.replace(/src="(?:\.\.\/)*assets\//g,'src="/assets/').replace(/<img\b(?![^>]*\bwidth=)([^>]*src="\/assets\/[^"]+\.webp"[^>]*)>/g,'<img width="1920" height="1080"$1>');
  html=html.replace(/href="([^"#]+)"/g,(match,href)=>{if(/^(?:https?:|data:|\/.*\.(?:css|json|svg))/.test(href)||href.endsWith('.css'))return match;const target=new URL(href,'https://build.local/'+originalPath);let dest=target.pathname.replace(/index\.html$/,'');if(dest.endsWith('RESEARCH.md'))dest='/credits/';if(![...pages.keys()].some(key=>'/'+key===dest))return match;return`href="${localizedPath(lang,dest.slice(1))}${esc(target.search)}"`;});
  if(!p.info){
   html=html.replace(/data-page-region="[^"]*"/,`data-page-region="${defaultRegion}"${p.useStoredRegion?' data-use-stored-region="true"':''}${p.scheduleServices?' data-schedule-services="'+p.scheduleServices.join(',')+'"':''}`);
